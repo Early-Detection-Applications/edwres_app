@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Tes Psikologi",
+    "description": "Mengukur dan menilai aspek psikologis seperti motivasi kerja, optimisme, kepribadian proaktif, resiliensi, kecerdasan emosi, kepribadian tahan banting, dan intensi berwirausaha.",
+    "icon": "psychology"
+  },
+  {
+    "title": "Penilaian Keterampilan",
+    "description": "Mengukur kemampuan teknis dan soft skills seperti komunikasi interpersonal, pemecahan masalah, penyesuaian diri, dan berani mengambil resiko.",
+    "icon": "handyman"
+  },
+  {
+    "title": "Analisis Gap Keterampilan",
+    "description": "Mengidentifikasi perbedaan antara keterampilan yang dimiliki dengan yang dibutuhkan di dunia kerja/industri. Mengidentifikasi ketrampilan yang tertinggi dan terendah yang dimiliki individu.",
+    "icon": "pie_chart"
+  },
+  {
+    "title": "Feedback Instan",
+    "description": "Setelah pengisian pernyataan diri, aplikasi memberikan feedback secara otomatis mengenai kesiapan kerja siswa/mahasiswa/lulusan.",
+    "icon": "chat"
+  },
+  {
+    "title": "Rekomendasi Pekerjaan yang Cocok",
+    "description": "Berdasarkan hasil diagnosis dan tips yang diberikan, aplikasi dapat memberikan rekomendasi karir yang sesuai dengan profil individu.",
+    "icon": "work_outline"
+  },
+  {
+    "title": "Pelatihan dan Pengembangan",
+    "description": "Menyediakan modul pelatihan untuk meningkatkan aspek yang masih kurang yang dimiliki.",
+    "icon": "school"
+  },
+  {
+    "title": "Pemantauan Progres",
+    "description": "Membantu pengguna memantau peningkatan kesiapan kerja dari waktu ke waktu.",
+    "icon": "show_chart"
+  }
+]
