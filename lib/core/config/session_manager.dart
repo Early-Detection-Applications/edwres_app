@@ -13,19 +13,21 @@
 // limitations under the License.
 
 import 'package:edwres_app/models/models.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SessionManager {
   SessionManager._();
 
-  static bool isLogin = false;
+  static final ValueNotifier<bool> isLogin = ValueNotifier(false);
+
   static String? username;
   static String? level;
 
   static Future<void> load() async {
     final prefs = await SharedPreferences.getInstance();
 
-    isLogin = prefs.getBool('is_login') ?? false;
+    isLogin.value = prefs.getBool('is_login') ?? false;
     username = prefs.getString('username');
     level = prefs.getString('level');
   }
@@ -37,7 +39,7 @@ class SessionManager {
     await prefs.setString('username', user.username!);
     await prefs.setString('level', user.level!);
 
-    isLogin = true;
+    isLogin.value = true;
     username = user.username;
     level = user.level;
   }
@@ -47,7 +49,7 @@ class SessionManager {
 
     await prefs.clear();
 
-    isLogin = false;
+    isLogin.value = false;
     username = null;
     level = null;
   }

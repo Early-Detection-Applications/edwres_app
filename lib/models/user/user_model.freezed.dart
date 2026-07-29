@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserModel {
 
-@JsonKey(name: 'id') String? get id;@JsonKey(name: 'id_user') int? get idUser;@JsonKey(name: 'username') String? get username;@JsonKey(name: 'nama_lengkap') String? get nameLengkap;@JsonKey(name: 'nama_panggilan') String? get namaPanggilan;@JsonKey(name: 'email') String? get email;@JsonKey(name: 'email_verified_at') DateTime? get emailVerifiedAt;@JsonKey(name: 'google_id') String? get googleId;@JsonKey(name: 'asal_sekolah') String? get asalSekolah;@JsonKey(name: 'kelas_jurusan') String? get kelasJurusan;@JsonKey(name: 'level') String? get level;@JsonKey(name: 'foto') String? get foto;
+@JsonKey(name: 'id') int? get id;@JsonKey(name: 'id_user') int? get idUser;@JsonKey(name: 'username') String? get username;@JsonKey(name: 'nama_lengkap') String? get nameLengkap;@JsonKey(name: 'nama_panggilan') String? get namaPanggilan;@JsonKey(name: 'email') String? get email;@JsonKey(name: 'email_verified_at') DateTime? get emailVerifiedAt;@JsonKey(name: 'google_id') String? get googleId;@JsonKey(name: 'asal_sekolah') String? get asalSekolah;@JsonKey(name: 'kelas_jurusan') String? get kelasJurusan;@JsonKey(name: 'level') String? get level;@JsonKey(name: 'foto') String? get foto;
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $UserModelCopyWith<$Res>  {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) _then) = _$UserModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'id') String? id,@JsonKey(name: 'id_user') int? idUser,@JsonKey(name: 'username') String? username,@JsonKey(name: 'nama_lengkap') String? nameLengkap,@JsonKey(name: 'nama_panggilan') String? namaPanggilan,@JsonKey(name: 'email') String? email,@JsonKey(name: 'email_verified_at') DateTime? emailVerifiedAt,@JsonKey(name: 'google_id') String? googleId,@JsonKey(name: 'asal_sekolah') String? asalSekolah,@JsonKey(name: 'kelas_jurusan') String? kelasJurusan,@JsonKey(name: 'level') String? level,@JsonKey(name: 'foto') String? foto
+@JsonKey(name: 'id') int? id,@JsonKey(name: 'id_user') int? idUser,@JsonKey(name: 'username') String? username,@JsonKey(name: 'nama_lengkap') String? nameLengkap,@JsonKey(name: 'nama_panggilan') String? namaPanggilan,@JsonKey(name: 'email') String? email,@JsonKey(name: 'email_verified_at') DateTime? emailVerifiedAt,@JsonKey(name: 'google_id') String? googleId,@JsonKey(name: 'asal_sekolah') String? asalSekolah,@JsonKey(name: 'kelas_jurusan') String? kelasJurusan,@JsonKey(name: 'level') String? level,@JsonKey(name: 'foto') String? foto
 });
 
 
@@ -68,7 +68,7 @@ class _$UserModelCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? idUser = freezed,Object? username = freezed,Object? nameLengkap = freezed,Object? namaPanggilan = freezed,Object? email = freezed,Object? emailVerifiedAt = freezed,Object? googleId = freezed,Object? asalSekolah = freezed,Object? kelasJurusan = freezed,Object? level = freezed,Object? foto = freezed,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,idUser: freezed == idUser ? _self.idUser : idUser // ignore: cast_nullable_to_non_nullable
+as int?,idUser: freezed == idUser ? _self.idUser : idUser // ignore: cast_nullable_to_non_nullable
 as int?,username: freezed == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
 as String?,nameLengkap: freezed == nameLengkap ? _self.nameLengkap : nameLengkap // ignore: cast_nullable_to_non_nullable
 as String?,namaPanggilan: freezed == namaPanggilan ? _self.namaPanggilan : namaPanggilan // ignore: cast_nullable_to_non_nullable
@@ -164,7 +164,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  String? id, @JsonKey(name: 'id_user')  int? idUser, @JsonKey(name: 'username')  String? username, @JsonKey(name: 'nama_lengkap')  String? nameLengkap, @JsonKey(name: 'nama_panggilan')  String? namaPanggilan, @JsonKey(name: 'email')  String? email, @JsonKey(name: 'email_verified_at')  DateTime? emailVerifiedAt, @JsonKey(name: 'google_id')  String? googleId, @JsonKey(name: 'asal_sekolah')  String? asalSekolah, @JsonKey(name: 'kelas_jurusan')  String? kelasJurusan, @JsonKey(name: 'level')  String? level, @JsonKey(name: 'foto')  String? foto)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  int? id, @JsonKey(name: 'id_user')  int? idUser, @JsonKey(name: 'username')  String? username, @JsonKey(name: 'nama_lengkap')  String? nameLengkap, @JsonKey(name: 'nama_panggilan')  String? namaPanggilan, @JsonKey(name: 'email')  String? email, @JsonKey(name: 'email_verified_at')  DateTime? emailVerifiedAt, @JsonKey(name: 'google_id')  String? googleId, @JsonKey(name: 'asal_sekolah')  String? asalSekolah, @JsonKey(name: 'kelas_jurusan')  String? kelasJurusan, @JsonKey(name: 'level')  String? level, @JsonKey(name: 'foto')  String? foto)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UserModel() when $default != null:
 return $default(_that.id,_that.idUser,_that.username,_that.nameLengkap,_that.namaPanggilan,_that.email,_that.emailVerifiedAt,_that.googleId,_that.asalSekolah,_that.kelasJurusan,_that.level,_that.foto);case _:
@@ -185,7 +185,7 @@ return $default(_that.id,_that.idUser,_that.username,_that.nameLengkap,_that.nam
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  String? id, @JsonKey(name: 'id_user')  int? idUser, @JsonKey(name: 'username')  String? username, @JsonKey(name: 'nama_lengkap')  String? nameLengkap, @JsonKey(name: 'nama_panggilan')  String? namaPanggilan, @JsonKey(name: 'email')  String? email, @JsonKey(name: 'email_verified_at')  DateTime? emailVerifiedAt, @JsonKey(name: 'google_id')  String? googleId, @JsonKey(name: 'asal_sekolah')  String? asalSekolah, @JsonKey(name: 'kelas_jurusan')  String? kelasJurusan, @JsonKey(name: 'level')  String? level, @JsonKey(name: 'foto')  String? foto)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  int? id, @JsonKey(name: 'id_user')  int? idUser, @JsonKey(name: 'username')  String? username, @JsonKey(name: 'nama_lengkap')  String? nameLengkap, @JsonKey(name: 'nama_panggilan')  String? namaPanggilan, @JsonKey(name: 'email')  String? email, @JsonKey(name: 'email_verified_at')  DateTime? emailVerifiedAt, @JsonKey(name: 'google_id')  String? googleId, @JsonKey(name: 'asal_sekolah')  String? asalSekolah, @JsonKey(name: 'kelas_jurusan')  String? kelasJurusan, @JsonKey(name: 'level')  String? level, @JsonKey(name: 'foto')  String? foto)  $default,) {final _that = this;
 switch (_that) {
 case _UserModel():
 return $default(_that.id,_that.idUser,_that.username,_that.nameLengkap,_that.namaPanggilan,_that.email,_that.emailVerifiedAt,_that.googleId,_that.asalSekolah,_that.kelasJurusan,_that.level,_that.foto);case _:
@@ -205,7 +205,7 @@ return $default(_that.id,_that.idUser,_that.username,_that.nameLengkap,_that.nam
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'id')  String? id, @JsonKey(name: 'id_user')  int? idUser, @JsonKey(name: 'username')  String? username, @JsonKey(name: 'nama_lengkap')  String? nameLengkap, @JsonKey(name: 'nama_panggilan')  String? namaPanggilan, @JsonKey(name: 'email')  String? email, @JsonKey(name: 'email_verified_at')  DateTime? emailVerifiedAt, @JsonKey(name: 'google_id')  String? googleId, @JsonKey(name: 'asal_sekolah')  String? asalSekolah, @JsonKey(name: 'kelas_jurusan')  String? kelasJurusan, @JsonKey(name: 'level')  String? level, @JsonKey(name: 'foto')  String? foto)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'id')  int? id, @JsonKey(name: 'id_user')  int? idUser, @JsonKey(name: 'username')  String? username, @JsonKey(name: 'nama_lengkap')  String? nameLengkap, @JsonKey(name: 'nama_panggilan')  String? namaPanggilan, @JsonKey(name: 'email')  String? email, @JsonKey(name: 'email_verified_at')  DateTime? emailVerifiedAt, @JsonKey(name: 'google_id')  String? googleId, @JsonKey(name: 'asal_sekolah')  String? asalSekolah, @JsonKey(name: 'kelas_jurusan')  String? kelasJurusan, @JsonKey(name: 'level')  String? level, @JsonKey(name: 'foto')  String? foto)?  $default,) {final _that = this;
 switch (_that) {
 case _UserModel() when $default != null:
 return $default(_that.id,_that.idUser,_that.username,_that.nameLengkap,_that.namaPanggilan,_that.email,_that.emailVerifiedAt,_that.googleId,_that.asalSekolah,_that.kelasJurusan,_that.level,_that.foto);case _:
@@ -223,7 +223,7 @@ class _UserModel implements UserModel {
   const _UserModel({@JsonKey(name: 'id') this.id, @JsonKey(name: 'id_user') this.idUser, @JsonKey(name: 'username') this.username, @JsonKey(name: 'nama_lengkap') this.nameLengkap, @JsonKey(name: 'nama_panggilan') this.namaPanggilan, @JsonKey(name: 'email') this.email, @JsonKey(name: 'email_verified_at') this.emailVerifiedAt, @JsonKey(name: 'google_id') this.googleId, @JsonKey(name: 'asal_sekolah') this.asalSekolah, @JsonKey(name: 'kelas_jurusan') this.kelasJurusan, @JsonKey(name: 'level') this.level, @JsonKey(name: 'foto') this.foto});
   factory _UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
 
-@override@JsonKey(name: 'id') final  String? id;
+@override@JsonKey(name: 'id') final  int? id;
 @override@JsonKey(name: 'id_user') final  int? idUser;
 @override@JsonKey(name: 'username') final  String? username;
 @override@JsonKey(name: 'nama_lengkap') final  String? nameLengkap;
@@ -269,7 +269,7 @@ abstract mixin class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Re
   factory _$UserModelCopyWith(_UserModel value, $Res Function(_UserModel) _then) = __$UserModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'id') String? id,@JsonKey(name: 'id_user') int? idUser,@JsonKey(name: 'username') String? username,@JsonKey(name: 'nama_lengkap') String? nameLengkap,@JsonKey(name: 'nama_panggilan') String? namaPanggilan,@JsonKey(name: 'email') String? email,@JsonKey(name: 'email_verified_at') DateTime? emailVerifiedAt,@JsonKey(name: 'google_id') String? googleId,@JsonKey(name: 'asal_sekolah') String? asalSekolah,@JsonKey(name: 'kelas_jurusan') String? kelasJurusan,@JsonKey(name: 'level') String? level,@JsonKey(name: 'foto') String? foto
+@JsonKey(name: 'id') int? id,@JsonKey(name: 'id_user') int? idUser,@JsonKey(name: 'username') String? username,@JsonKey(name: 'nama_lengkap') String? nameLengkap,@JsonKey(name: 'nama_panggilan') String? namaPanggilan,@JsonKey(name: 'email') String? email,@JsonKey(name: 'email_verified_at') DateTime? emailVerifiedAt,@JsonKey(name: 'google_id') String? googleId,@JsonKey(name: 'asal_sekolah') String? asalSekolah,@JsonKey(name: 'kelas_jurusan') String? kelasJurusan,@JsonKey(name: 'level') String? level,@JsonKey(name: 'foto') String? foto
 });
 
 
@@ -289,7 +289,7 @@ class __$UserModelCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? idUser = freezed,Object? username = freezed,Object? nameLengkap = freezed,Object? namaPanggilan = freezed,Object? email = freezed,Object? emailVerifiedAt = freezed,Object? googleId = freezed,Object? asalSekolah = freezed,Object? kelasJurusan = freezed,Object? level = freezed,Object? foto = freezed,}) {
   return _then(_UserModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,idUser: freezed == idUser ? _self.idUser : idUser // ignore: cast_nullable_to_non_nullable
+as int?,idUser: freezed == idUser ? _self.idUser : idUser // ignore: cast_nullable_to_non_nullable
 as int?,username: freezed == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
 as String?,nameLengkap: freezed == nameLengkap ? _self.nameLengkap : nameLengkap // ignore: cast_nullable_to_non_nullable
 as String?,namaPanggilan: freezed == namaPanggilan ? _self.namaPanggilan : namaPanggilan // ignore: cast_nullable_to_non_nullable

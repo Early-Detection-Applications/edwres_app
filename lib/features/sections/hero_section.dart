@@ -86,21 +86,15 @@ class HeroSection extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      SessionManager.isLogin
-                          ? ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Fitur belum tersedia. Sedang dalam proses pengembangan',
-                                ),
-                              ),
-                            )
-                          : ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Silahkan login terlebih dahulu!',
-                                ),
-                              ),
-                            );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            SessionManager.isLogin.value
+                                ? 'Fitur belum tersedia. Sedang dalam proses pengembangan'
+                                : 'Silahkan login terlebih dahulu!',
+                          ),
+                        ),
+                      );
                     },
                     style: ButtonStyle(
                       backgroundColor: WidgetStatePropertyAll(

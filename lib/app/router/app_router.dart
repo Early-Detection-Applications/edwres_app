@@ -56,5 +56,12 @@ final appRouter = GoRouter(
         return NoTransitionPage(child: const ContactScreen());
       },
     ),
+    GoRoute(
+      path: AppRoutes.consultation,
+      name: AppRoutes.consultation,
+      pageBuilder: (context, state) {
+        return NoTransitionPage(child: const ConsultationScreen());
+      },
+    ),
   ],
 );

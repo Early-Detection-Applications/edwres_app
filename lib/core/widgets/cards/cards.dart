@@ -18,3 +18,6 @@ export 'comment_card.dart';
 export 'rss_news_card.dart';
 export 'guestbook_card.dart';
 export 'contact_card.dart';
+export 'welcome_card.dart';
+export 'history_card.dart';
+export 'consultation_card.dart';

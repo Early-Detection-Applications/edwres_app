@@ -12,9 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'assessment/assessment.dart';
-export 'news/news.dart';
-export 'rss_news/rss_news.dart';
-export 'guestbook/guestbook.dart';
-export 'auth/auth.dart';
-export 'consultation/consultation.dart';
+part of 'consultation_bloc.dart';
+
+@freezed
+class ConsultationEvent with _$ConsultationEvent {
+  const factory ConsultationEvent.toggleQuestion(int questionId) =
+      _ToggleQuestion;
+
+  const factory ConsultationEvent.reset() = _Reset;
+}

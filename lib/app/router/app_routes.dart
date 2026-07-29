@@ -17,4 +17,5 @@ abstract final class AppRoutes {
   static const news = '/news';
   static const login = '/login';
   static const contact = '/contact';
+  static const consultation = '/consultation';
 }

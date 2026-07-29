@@ -17,3 +17,5 @@ export 'app_drawer.dart';
 export 'hero_background.dart';
 export 'logo_marquee.dart';
 export 'cards/cards.dart';
+export 'consultation_section_tab.dart';
+export 'consultation_tab_content.dart';

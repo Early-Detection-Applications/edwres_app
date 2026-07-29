@@ -25,7 +25,7 @@ class NewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imageUrl =
-        "${dotenv.get('BASE_URL')}/storage/berita/${newsModel.gambar}";
+        "${dotenv.get('IMAGE_URL')}/sikolog-edwres/berita/${newsModel.gambar}";
     return SizedBox(
       height: 340,
       child: Card(

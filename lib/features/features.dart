@@ -17,3 +17,4 @@ export 'sections/sections.dart';
 export 'detail/detail.dart';
 export 'auth/auth.dart';
 export 'contacts/contacts.dart';
+export 'consultation/consultation.dart';

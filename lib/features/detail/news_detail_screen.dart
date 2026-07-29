@@ -27,7 +27,8 @@ class NewsDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageUrl = "${dotenv.get('URL')}/storage/berita/${data.gambar}";
+    final imageUrl =
+        "${dotenv.get('IMAGE_URL')}/sikolog-edwres/berita/${data.gambar}";
 
     return Scaffold(
       backgroundColor: AppColor.primaryBold,

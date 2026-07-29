@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'assessment/assessment.dart';
-export 'news/news.dart';
-export 'rss_news/rss_news.dart';
-export 'guestbook/guestbook.dart';
-export 'auth/auth.dart';
-export 'consultation/consultation.dart';
+part of 'consultation_bloc.dart';
+
+@freezed
+abstract class ConsultationState with _$ConsultationState {
+  const factory ConsultationState({
+    @Default(<int>[]) List<int> selectedQuestionIds,
+  }) = _ConsultationState;
+}

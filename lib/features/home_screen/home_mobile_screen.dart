@@ -60,16 +60,43 @@ class _HomeMobileScreenState extends State<HomeMobileScreen> {
             const Navbar(),
             Expanded(
               child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    HeroSection(),
-                    MitraSection(),
-                    AboutSection(),
-                    NewsSection(),
-                    RssNewsSection(),
-                    GuestBookSection(),
-                    FooterSection(),
-                  ],
+                child: ValueListenableBuilder<bool>(
+                  valueListenable: SessionManager.isLogin,
+                  builder: (context, isLogin, _) {
+                    if (!isLogin) {
+                      return Column(
+                        children: [
+                          HeroSection(),
+                          MitraSection(),
+                          AboutSection(),
+                          NewsSection(),
+                          RssNewsSection(),
+                          GuestBookSection(),
+                          FooterSection(),
+                        ],
+                      );
+                    }
+
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Dashboard User',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          WelcomeCard(),
+                          const SizedBox(height: 8.0),
+                          HistoryCard(),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ),
             ),

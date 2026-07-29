@@ -12,9 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'assessment/assessment.dart';
-export 'news/news.dart';
-export 'rss_news/rss_news.dart';
-export 'guestbook/guestbook.dart';
-export 'auth/auth.dart';
-export 'consultation/consultation.dart';
+export 'consultation_bloc.dart';

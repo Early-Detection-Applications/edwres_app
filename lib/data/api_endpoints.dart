@@ -15,7 +15,7 @@
 class ApiEndpoints {
   // TODO: Revert for new endpoint
   // static const String news = '/berita/list';
-  static const String news = '/Rest_api//list_berita.php';
+  static const String news = '/Rest_api/list_berita.php';
   static const String rssNews = '/berita/rss-data';
   static const String guestbook = '/guestbook/list';
   static const String login = '/Rest_api/login_user.php';

@@ -32,164 +32,224 @@ class _AppDrawerState extends State<AppDrawer> {
       child: Column(
         children: [
           Text('Menu', style: AppTextStyle.headlineMd),
-          _item(
-            context,
-            title: 'Tentang EDWRES',
-            onTap: () {
-              GoRouter.of(context).pushNamed(AppRoutes.home);
-            },
-          ),
-          _item(
-            context,
-            title: 'Berita',
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
-                  ),
-                ),
-              );
-            },
-          ),
-          _item(
-            context,
-            title: 'Referensi Hasil Penelitian',
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
-                  ),
-                ),
-              );
-            },
-          ),
-          _item(
-            context,
-            title: 'Modul Pelatihan',
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
-                  ),
-                ),
-              );
-            },
-          ),
-          _item(
-            context,
-            title: 'Konsultasi',
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
-                  ),
-                ),
-              );
-            },
-          ),
-          _item(
-            context,
-            title: 'Kontak',
-            onTap: () {
-              GoRouter.of(context).push(AppRoutes.contact);
-            },
-          ),
-          const SizedBox(height: 12.0),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Divider(thickness: 0.5),
-          ),
-          !SessionManager.isLogin
-              ? Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 8,
-                      ),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            GoRouter.of(context).push(AppRoutes.login);
-                            Navigator.of(context).pop();
-                          },
-                          style: ButtonStyle(
-                            backgroundColor: WidgetStatePropertyAll(
-                              AppColor.secondary,
+          ValueListenableBuilder<bool>(
+            valueListenable: SessionManager.isLogin,
+            builder: (context, isLogin, _) {
+              return Column(
+                children: [
+                  isLogin
+                      ? Column(
+                          children: [
+                            _item(
+                              context,
+                              title: 'Dashboard',
+                              onTap: () {
+                                GoRouter.of(context).push(AppRoutes.home);
+                              },
                             ),
-                            shape: WidgetStatePropertyAll(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
-                              ),
+                            _item(
+                              context,
+                              title: 'Edit Profile',
+                              onTap: () {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Fitur belum tersedia. Sedang dalam proses pengembangan',
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
-                          ),
-                          child: Text('Login', style: AppTextStyle.titleMd),
+                            _item(
+                              context,
+                              title: 'Konsultasi',
+                              onTap: () {
+                                GoRouter.of(
+                                  context,
+                                ).push(AppRoutes.consultation);
+                              },
+                            ),
+                          ],
+                        )
+                      : Column(
+                          children: [
+                            _item(
+                              context,
+                              title: 'Tentang EDWRES',
+                              onTap: () {
+                                GoRouter.of(context).pushNamed(AppRoutes.home);
+                              },
+                            ),
+                            _item(
+                              context,
+                              title: 'Berita',
+                              onTap: () {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                            _item(
+                              context,
+                              title: 'Referensi Hasil Penelitian',
+                              onTap: () {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                            _item(
+                              context,
+                              title: 'Modul Pelatihan',
+                              onTap: () {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                            _item(
+                              context,
+                              title: 'Konsultasi',
+                              onTap: () {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                            _item(
+                              context,
+                              title: 'Kontak',
+                              onTap: () {
+                                GoRouter.of(context).push(AppRoutes.contact);
+                              },
+                            ),
+                          ],
                         ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
+
+                  const SizedBox(height: 12.0),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Divider(thickness: 0.5),
+                  ),
+
+                  !isLogin
+                      ? Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 8,
+                              ),
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    GoRouter.of(context).push(AppRoutes.login);
+                                    Navigator.of(context).pop();
+                                  },
+                                  style: ButtonStyle(
+                                    backgroundColor: WidgetStatePropertyAll(
+                                      AppColor.secondary,
+                                    ),
+                                    shape: WidgetStatePropertyAll(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    'Login',
+                                    style: AppTextStyle.titleMd,
+                                  ),
                                 ),
                               ),
-                            );
-                          },
-                          style: ButtonStyle(
-                            backgroundColor: WidgetStatePropertyAll(
-                              AppColor.border,
                             ),
-                            shape: WidgetStatePropertyAll(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                              ),
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text(
+                                          'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  style: ButtonStyle(
+                                    backgroundColor: WidgetStatePropertyAll(
+                                      AppColor.border,
+                                    ),
+                                    shape: WidgetStatePropertyAll(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    'Register',
+                                    style: AppTextStyle.titleMd,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 8,
+                          ),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: _isLogoutLoading
+                                  ? null
+                                  : () {
+                                      _showLogoutDialog();
+                                    },
+                              style: ButtonStyle(
+                                backgroundColor: WidgetStatePropertyAll(
+                                  AppColor.secondary,
+                                ),
+                                shape: WidgetStatePropertyAll(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                              ),
+                              child: Text(
+                                'Logout',
+                                style: AppTextStyle.titleMd,
                               ),
                             ),
                           ),
-                          child: Text('Register', style: AppTextStyle.titleMd),
                         ),
-                      ),
-                    ),
-                  ],
-                )
-              : Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 8,
-                  ),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: _isLogoutLoading
-                          ? null
-                          : () {
-                              _showLogoutDialog();
-                            },
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(
-                          AppColor.secondary,
-                        ),
-                        shape: WidgetStatePropertyAll(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                      ),
-                      child: Text('Logout', style: AppTextStyle.titleMd),
-                    ),
-                  ),
-                ),
+                ],
+              );
+            },
+          ),
         ],
       ),
     );
