@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$GuestbookModel {
 
-@JsonKey(name: 'id') int? get id;@JsonKey(name: 'nama') String? get nama;@JsonKey(name: 'email') String? get email;@JsonKey(name: 'pesan') String? get message;
+@JsonKey(name: 'id') int? get id;@JsonKey(name: 'nama') String? get nama;@JsonKey(name: 'email') String? get email;@JsonKey(name: 'pesan') String? get message;@JsonKey(name: 'created_at') DateTime? get createdAt;
 /// Create a copy of GuestbookModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $GuestbookModelCopyWith<GuestbookModel> get copyWith => _$GuestbookModelCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GuestbookModel&&(identical(other.id, id) || other.id == id)&&(identical(other.nama, nama) || other.nama == nama)&&(identical(other.email, email) || other.email == email)&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GuestbookModel&&(identical(other.id, id) || other.id == id)&&(identical(other.nama, nama) || other.nama == nama)&&(identical(other.email, email) || other.email == email)&&(identical(other.message, message) || other.message == message)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,nama,email,message);
+int get hashCode => Object.hash(runtimeType,id,nama,email,message,createdAt);
 
 @override
 String toString() {
-  return 'GuestbookModel(id: $id, nama: $nama, email: $email, message: $message)';
+  return 'GuestbookModel(id: $id, nama: $nama, email: $email, message: $message, createdAt: $createdAt)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $GuestbookModelCopyWith<$Res>  {
   factory $GuestbookModelCopyWith(GuestbookModel value, $Res Function(GuestbookModel) _then) = _$GuestbookModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'id') int? id,@JsonKey(name: 'nama') String? nama,@JsonKey(name: 'email') String? email,@JsonKey(name: 'pesan') String? message
+@JsonKey(name: 'id') int? id,@JsonKey(name: 'nama') String? nama,@JsonKey(name: 'email') String? email,@JsonKey(name: 'pesan') String? message,@JsonKey(name: 'created_at') DateTime? createdAt
 });
 
 
@@ -65,13 +65,14 @@ class _$GuestbookModelCopyWithImpl<$Res>
 
 /// Create a copy of GuestbookModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? nama = freezed,Object? email = freezed,Object? message = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? nama = freezed,Object? email = freezed,Object? message = freezed,Object? createdAt = freezed,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,nama: freezed == nama ? _self.nama : nama // ignore: cast_nullable_to_non_nullable
 as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String?,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime?,
   ));
 }
 
@@ -156,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  int? id, @JsonKey(name: 'nama')  String? nama, @JsonKey(name: 'email')  String? email, @JsonKey(name: 'pesan')  String? message)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  int? id, @JsonKey(name: 'nama')  String? nama, @JsonKey(name: 'email')  String? email, @JsonKey(name: 'pesan')  String? message, @JsonKey(name: 'created_at')  DateTime? createdAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GuestbookModel() when $default != null:
-return $default(_that.id,_that.nama,_that.email,_that.message);case _:
+return $default(_that.id,_that.nama,_that.email,_that.message,_that.createdAt);case _:
   return orElse();
 
 }
@@ -177,10 +178,10 @@ return $default(_that.id,_that.nama,_that.email,_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  int? id, @JsonKey(name: 'nama')  String? nama, @JsonKey(name: 'email')  String? email, @JsonKey(name: 'pesan')  String? message)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  int? id, @JsonKey(name: 'nama')  String? nama, @JsonKey(name: 'email')  String? email, @JsonKey(name: 'pesan')  String? message, @JsonKey(name: 'created_at')  DateTime? createdAt)  $default,) {final _that = this;
 switch (_that) {
 case _GuestbookModel():
-return $default(_that.id,_that.nama,_that.email,_that.message);case _:
+return $default(_that.id,_that.nama,_that.email,_that.message,_that.createdAt);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +198,10 @@ return $default(_that.id,_that.nama,_that.email,_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'id')  int? id, @JsonKey(name: 'nama')  String? nama, @JsonKey(name: 'email')  String? email, @JsonKey(name: 'pesan')  String? message)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'id')  int? id, @JsonKey(name: 'nama')  String? nama, @JsonKey(name: 'email')  String? email, @JsonKey(name: 'pesan')  String? message, @JsonKey(name: 'created_at')  DateTime? createdAt)?  $default,) {final _that = this;
 switch (_that) {
 case _GuestbookModel() when $default != null:
-return $default(_that.id,_that.nama,_that.email,_that.message);case _:
+return $default(_that.id,_that.nama,_that.email,_that.message,_that.createdAt);case _:
   return null;
 
 }
@@ -212,13 +213,14 @@ return $default(_that.id,_that.nama,_that.email,_that.message);case _:
 @JsonSerializable()
 
 class _GuestbookModel implements GuestbookModel {
-  const _GuestbookModel({@JsonKey(name: 'id') this.id, @JsonKey(name: 'nama') this.nama, @JsonKey(name: 'email') this.email, @JsonKey(name: 'pesan') this.message});
+  const _GuestbookModel({@JsonKey(name: 'id') this.id, @JsonKey(name: 'nama') this.nama, @JsonKey(name: 'email') this.email, @JsonKey(name: 'pesan') this.message, @JsonKey(name: 'created_at') this.createdAt});
   factory _GuestbookModel.fromJson(Map<String, dynamic> json) => _$GuestbookModelFromJson(json);
 
 @override@JsonKey(name: 'id') final  int? id;
 @override@JsonKey(name: 'nama') final  String? nama;
 @override@JsonKey(name: 'email') final  String? email;
 @override@JsonKey(name: 'pesan') final  String? message;
+@override@JsonKey(name: 'created_at') final  DateTime? createdAt;
 
 /// Create a copy of GuestbookModel
 /// with the given fields replaced by the non-null parameter values.
@@ -233,16 +235,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GuestbookModel&&(identical(other.id, id) || other.id == id)&&(identical(other.nama, nama) || other.nama == nama)&&(identical(other.email, email) || other.email == email)&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GuestbookModel&&(identical(other.id, id) || other.id == id)&&(identical(other.nama, nama) || other.nama == nama)&&(identical(other.email, email) || other.email == email)&&(identical(other.message, message) || other.message == message)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,nama,email,message);
+int get hashCode => Object.hash(runtimeType,id,nama,email,message,createdAt);
 
 @override
 String toString() {
-  return 'GuestbookModel(id: $id, nama: $nama, email: $email, message: $message)';
+  return 'GuestbookModel(id: $id, nama: $nama, email: $email, message: $message, createdAt: $createdAt)';
 }
 
 
@@ -253,7 +255,7 @@ abstract mixin class _$GuestbookModelCopyWith<$Res> implements $GuestbookModelCo
   factory _$GuestbookModelCopyWith(_GuestbookModel value, $Res Function(_GuestbookModel) _then) = __$GuestbookModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'id') int? id,@JsonKey(name: 'nama') String? nama,@JsonKey(name: 'email') String? email,@JsonKey(name: 'pesan') String? message
+@JsonKey(name: 'id') int? id,@JsonKey(name: 'nama') String? nama,@JsonKey(name: 'email') String? email,@JsonKey(name: 'pesan') String? message,@JsonKey(name: 'created_at') DateTime? createdAt
 });
 
 
@@ -270,13 +272,14 @@ class __$GuestbookModelCopyWithImpl<$Res>
 
 /// Create a copy of GuestbookModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? nama = freezed,Object? email = freezed,Object? message = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? nama = freezed,Object? email = freezed,Object? message = freezed,Object? createdAt = freezed,}) {
   return _then(_GuestbookModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,nama: freezed == nama ? _self.nama : nama // ignore: cast_nullable_to_non_nullable
 as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String?,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime?,
   ));
 }
 

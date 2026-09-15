@@ -14,7 +14,9 @@
 
 export 'assessment/assessment.dart';
 export 'news/news.dart';
+export 'entrepreneurship/entrepreneurship.dart';
 export 'rss_news/rss_news.dart';
 export 'guestbook/guestbook.dart';
 export 'auth/auth.dart';
 export 'consultation/consultation.dart';
+export 'detection_history/detection_history.dart';

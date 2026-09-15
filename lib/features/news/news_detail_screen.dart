@@ -13,9 +13,12 @@
 // limitations under the License.
 
 import 'package:edwres_app/app/app.dart';
+import 'package:edwres_app/core/blocs/komentar/komentar_bloc.dart';
 import 'package:edwres_app/core/core.dart';
+import 'package:edwres_app/data/repository/komentar_repository.dart';
 import 'package:edwres_app/models/models.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -27,8 +30,7 @@ class NewsDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageUrl =
-        "${dotenv.get('IMAGE_URL')}/sikolog-edwres/berita/${data.gambar}";
+    final imageUrl = "${dotenv.get('IMAGE_URL')}/berita/${data.gambar}";
 
     return Scaffold(
       backgroundColor: AppColor.primaryBold,
@@ -56,29 +58,6 @@ class NewsDetailScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Icon(Icons.home, size: 14, color: AppColor.gray),
-                        const SizedBox(width: 4),
-                        Text('Home', style: TextStyle(color: AppColor.gray)),
-                        const SizedBox(width: 4),
-                        Icon(Icons.arrow_right, color: AppColor.gray),
-                        const SizedBox(width: 4),
-                        Text('Berita', style: TextStyle(color: AppColor.gray)),
-                        const SizedBox(width: 4),
-                        Icon(Icons.arrow_right, color: AppColor.gray),
-                        const SizedBox(width: 4),
-                        Expanded(
-                          child: Text(
-                            data.judul ?? '-',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(color: AppColor.gray),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
                     Card(
                       elevation: 4,
                       color: AppColor.primary400,
@@ -98,16 +77,28 @@ class NewsDetailScreen extends StatelessWidget {
                                   imageUrl,
                                   width: double.infinity,
                                   fit: BoxFit.cover,
+                                  loadingBuilder: (context, child, progress) {
+                                    if (progress == null) return child;
+
+                                    return Container(
+                                      color: AppColor.primaryBold,
+                                      child: const Center(
+                                        child: CircularProgressIndicator(
+                                          color: AppColor.secondary,
+                                        ),
+                                      ),
+                                    );
+                                  },
                                   errorBuilder: (_, __, ___) => Container(
-                                    color: Colors.grey.shade300,
+                                    color: AppColor.primaryBold,
                                     child: const Icon(
                                       Icons.image_not_supported,
+                                      color: AppColor.gray,
                                       size: 60,
                                     ),
                                   ),
                                 ),
                               ),
-
                               Positioned(
                                 top: 16,
                                 left: 16,
@@ -121,7 +112,9 @@ class NewsDetailScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Text(
-                                    data.kategori?.namaKategori ?? "-",
+                                    data.namaKategori ??
+                                        data.kategori?.namaKategori ??
+                                        "-",
                                     style: const TextStyle(
                                       color: AppColor.secondary,
                                       fontWeight: FontWeight.bold,
@@ -139,24 +132,31 @@ class NewsDetailScreen extends StatelessWidget {
                               children: [
                                 /// Tanggal & Penulis
                                 Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    _infoWidget(
-                                      Icons.calendar_month,
-                                      data.tanggal != null
-                                          ? DateFormat(
-                                              "dd MMM yyyy",
-                                              "id_ID",
-                                            ).format(data.tanggal!)
-                                          : "-",
+                                    Expanded(
+                                      child: _infoWidget(
+                                        Icons.calendar_month,
+                                        data.tanggal != null
+                                            ? DateFormat(
+                                                "dd MMM yyyy",
+                                                "id_ID",
+                                              ).format(data.tanggal!)
+                                            : "-",
+                                      ),
                                     ),
-                                    const SizedBox(width: 24),
-                                    _infoWidget(
-                                      Icons.person,
-                                      data.user?.nameLengkap ?? "-",
+                                    const SizedBox(width: 12),
+                                    Expanded(
+                                      child: _infoWidget(
+                                        Icons.person,
+                                        data.namaLengkap ??
+                                            data.user?.nameLengkap ??
+                                            "-",
+                                      ),
                                     ),
                                   ],
                                 ),
-                                const SizedBox(height: 16),
+                                const SizedBox(height: 8),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
@@ -176,10 +176,13 @@ class NewsDetailScreen extends StatelessWidget {
                                     const SizedBox(width: 8),
                                     Expanded(
                                       child: Text(
-                                        data.kategori?.namaKategori ?? "-",
+                                        data.namaKategori ??
+                                            data.kategori?.namaKategori ??
+                                            "-",
                                         style: AppTextStyle.titleMd.copyWith(
                                           color: AppColor.secondary,
                                           fontWeight: FontWeight.bold,
+                                          fontSize: 12,
                                         ),
                                       ),
                                     ),
@@ -225,7 +228,10 @@ class NewsDetailScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 24.0),
-                    CommentCard(),
+                    BlocProvider(
+                      create: (context) => KomentarBloc(KomentarRepository()),
+                      child: CommentCard(idBerita: data.idBerita),
+                    ),
                   ],
                 ),
               ),
@@ -250,12 +256,16 @@ Widget _infoWidget(IconData icon, String text) {
         child: Icon(icon, color: AppColor.secondary, size: 16),
       ),
       const SizedBox(width: 10),
-      Text(
-        text,
-        style: const TextStyle(
-          color: Colors.white70,
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
+      Expanded(
+        child: Text(
+          text,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+            color: Colors.white70,
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
     ],

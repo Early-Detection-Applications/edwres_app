@@ -14,5 +14,9 @@
 
 export 'assessment_repository.dart';
 export 'news_repository.dart';
+export 'entrepreneurship_repository.dart';
 export 'rss_news_repository.dart';
 export 'guestbook_repository.dart';
+export 'indicator_repository.dart';
+export 'diagnosis_repository.dart';
+export 'detection_history_repository.dart';

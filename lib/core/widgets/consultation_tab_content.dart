@@ -12,8 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// ignore_for_file: deprecated_member_use
+
 import 'package:edwres_app/app/app.dart';
 import 'package:edwres_app/core/core.dart';
+import 'package:edwres_app/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -43,15 +46,30 @@ class _ConsultationPart extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ConsultationBloc, ConsultationState>(
       builder: (context, state) {
+        final indicators = getIndicatorsBySection(state.indicators, section);
+
         return ListView.separated(
-          padding: const EdgeInsets.fromLTRB(16, 16, 16, 100),
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
           physics: const BouncingScrollPhysics(),
-          itemCount: 10,
+
+          // +1 untuk navigation button
+          itemCount: indicators.length + 1,
+
           separatorBuilder: (_, __) => const SizedBox(height: 12),
+
           itemBuilder: (context, index) {
-            /// sementara id dibuat unik tiap section
-            /// nanti ganti dengan question.id dari API
-            final questionId = ((section - 1) * 10) + index + 1;
+            // ============================================================
+            // NAVIGATION BUTTON
+            // ============================================================
+            if (index == indicators.length) {
+              return _buildNavigationButtons(context);
+            }
+
+            // ============================================================
+            // QUESTION
+            // ============================================================
+            final indicator = indicators[index];
+            final questionId = indicator.kodeIndikator ?? '';
 
             final checked = state.selectedQuestionIds.contains(questionId);
 
@@ -64,10 +82,7 @@ class _ConsultationPart extends StatelessWidget {
               },
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 18,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                 decoration: BoxDecoration(
                   color: const Color(0xFF0F4B58),
                   border: Border.all(
@@ -75,6 +90,7 @@ class _ConsultationPart extends StatelessWidget {
                         ? AppColor.secondary.withOpacity(.5)
                         : Colors.white.withOpacity(.06),
                   ),
+                  borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
                   children: [
@@ -100,12 +116,12 @@ class _ConsultationPart extends StatelessWidget {
 
                     Expanded(
                       child: Text(
-                        "Saya berusaha tenang dalam mencari solusi permasalahan",
+                        indicator.namaIndikator ?? '',
                         style: TextStyle(
                           color: checked
                               ? Colors.white
                               : Colors.white.withOpacity(.85),
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -118,5 +134,121 @@ class _ConsultationPart extends StatelessWidget {
         );
       },
     );
+  }
+
+  // ============================================================
+  // NAVIGATION BUTTONS
+  // ============================================================
+
+  Widget _buildNavigationButtons(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8, bottom: 24),
+      child: Row(
+        children: [
+          // ==========================================================
+          // SEBELUMNYA
+          // ==========================================================
+          if (section > 1)
+            Expanded(
+              child: OutlinedButton.icon(
+                onPressed: () {
+                  final controller = DefaultTabController.of(context);
+
+                  controller.animateTo(section - 2);
+                },
+                icon: const Icon(
+                  Icons.arrow_back,
+                  size: 18,
+                  color: Colors.white,
+                ),
+                label: const Text(
+                  'Sebelumnya',
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: AppColor.primary,
+                  side: BorderSide(
+                    color: AppColor.white.withOpacity(.35),
+                    width: 1.2,
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 14,
+                    horizontal: 16,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  textStyle: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+
+          if (section > 1 && section < 4) const SizedBox(width: 12),
+
+          // ==========================================================
+          // SELANJUTNYA
+          // ==========================================================
+          if (section < 4)
+            Expanded(
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  final controller = DefaultTabController.of(context);
+
+                  controller.animateTo(section);
+                },
+                icon: const Icon(Icons.arrow_forward, size: 18),
+                label: const Text('Selanjutnya'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColor.secondary,
+                  foregroundColor: Colors.white,
+                  elevation: 0,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 14,
+                    horizontal: 16,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  textStyle: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  // ============================================================
+  // GET INDICATORS BY SECTION
+  // ============================================================
+
+  List<IndicatorModel> getIndicatorsBySection(
+    List<IndicatorModel> data,
+    int section,
+  ) {
+    final total = data.length;
+
+    var chunkSize = (total / 4).ceil();
+
+    if (chunkSize.isOdd && total > chunkSize) {
+      chunkSize++;
+    }
+
+    final start = (section - 1) * chunkSize;
+
+    if (start >= total) {
+      return [];
+    }
+
+    final end = (start + chunkSize > total) ? total : (start + chunkSize);
+
+    return data.sublist(start, end);
   }
 }

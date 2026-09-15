@@ -13,7 +13,6 @@
 // limitations under the License.
 
 import 'package:edwres_app/app/app.dart';
-import 'package:edwres_app/app/theme/theme.dart';
 import 'package:edwres_app/core/blocs/auth/auth.dart';
 import 'package:edwres_app/data/repository/user_repository.dart';
 import 'package:flutter/material.dart';
@@ -166,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Login berhasil')),
                       );
-                      GoRouter.of(context).push(AppRoutes.home);
+                      GoRouter.of(context).go(AppRoutes.dashboardUser);
                     }
                     if (state.status.isError) {
                       ScaffoldMessenger.of(
@@ -222,26 +221,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     );
                   },
                 ),
-                const SizedBox(height: 8),
-                SizedBox(
-                  width: double.infinity,
-                  child: InkWell(
-                    onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text(
-                            'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
-                          ),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Lupa Password?',
-                      style: TextStyle(color: AppColor.secondary),
-                      textAlign: TextAlign.end,
-                    ),
-                  ),
-                ),
+                // const SizedBox(height: 8),
+                // SizedBox(
+                //   width: double.infinity,
+                //   child: InkWell(
+                //     onTap: () {
+                //       ScaffoldMessenger.of(context).showSnackBar(
+                //         const SnackBar(
+                //           content: Text(
+                //             'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
+                //           ),
+                //         ),
+                //       );
+                //     },
+                //     child: Text(
+                //       'Lupa Password?',
+                //       style: TextStyle(color: AppColor.secondary),
+                //       textAlign: TextAlign.end,
+                //     ),
+                //   ),
+                // ),
                 const SizedBox(height: 32),
                 Row(
                   children: [
@@ -266,49 +265,50 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 const SizedBox(height: 32.0),
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text(
-                            'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
-                          ),
-                        ),
-                      );
-                    },
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: const Color(0xFF1F5B68),
-                      side: BorderSide(
-                        color: Colors.white.withValues(alpha: 0.12),
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FaIcon(
-                          FontAwesomeIcons.google,
-                          color: Colors.white,
-                          size: 14,
-                        ),
-                        SizedBox(width: 16),
-                        Text(
-                          'Akun Google',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16.0),
+                // TODO For Login with Google
+                // SizedBox(
+                //   width: double.infinity,
+                //   child: OutlinedButton(
+                //     onPressed: () {
+                //       ScaffoldMessenger.of(context).showSnackBar(
+                //         const SnackBar(
+                //           content: Text(
+                //             'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
+                //           ),
+                //         ),
+                //       );
+                //     },
+                //     style: OutlinedButton.styleFrom(
+                //       backgroundColor: const Color(0xFF1F5B68),
+                //       side: BorderSide(
+                //         color: Colors.white.withValues(alpha: 0.12),
+                //       ),
+                //       shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(8),
+                //       ),
+                //     ),
+                //     child: const Row(
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children: [
+                //         FaIcon(
+                //           FontAwesomeIcons.google,
+                //           color: Colors.white,
+                //           size: 14,
+                //         ),
+                //         SizedBox(width: 16),
+                //         Text(
+                //           'Akun Google',
+                //           style: TextStyle(
+                //             color: Colors.white,
+                //             fontSize: 14,
+                //             fontWeight: FontWeight.w700,
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(height: 16.0),
                 SizedBox(
                   width: double.infinity,
                   child: Row(
@@ -321,13 +321,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(width: 4.0),
                       InkWell(
                         onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
-                              ),
-                            ),
-                          );
+                          GoRouter.of(context).pushNamed(AppRoutes.register);
                         },
                         child: Text(
                           'Daftar',

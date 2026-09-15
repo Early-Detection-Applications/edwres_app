@@ -14,8 +14,23 @@
 
 abstract final class AppRoutes {
   static const home = '/';
+  static const dashboardUser = '/dashboard-user';
   static const news = '/news';
   static const login = '/login';
   static const contact = '/contact';
   static const consultation = '/consultation';
+  static const listNews = '/list-news';
+  static const register = '/register';
+  static const consultationResult = '/consultation-result';
+  static const detectionHistory = '/detection-history';
+  static const journalReference = '/journal-reference';
+  static const module = '/module';
+  static const bookReference = '/book-reference';
+  static const referensiBukuDetail = '/referensi-buku-detail';
+  static const tokoh = '/tokoh';
+  static const tokohDetail = '/tokoh-detail';
+  static const panduanAplikasi = '/panduan-aplikasi';
+  static const editProfile = '/edit-profile';
+  static const newsList = '/news-list';
+  static const entrepreneurshipList = '/entreprenuership-list';
 }

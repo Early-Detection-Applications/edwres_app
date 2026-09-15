@@ -55,11 +55,15 @@ extension ConsultationEventPatterns on ConsultationEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _ToggleQuestion value)?  toggleQuestion,TResult Function( _Reset value)?  reset,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Fetch value)?  fetch,TResult Function( _ToggleQuestion value)?  toggleQuestion,TResult Function( _Submit value)?  submit,TResult Function( _DownloadPdf value)?  downloadPdf,TResult Function( _OpenPdf value)?  openPdf,TResult Function( _Reset value)?  reset,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _ToggleQuestion() when toggleQuestion != null:
-return toggleQuestion(_that);case _Reset() when reset != null:
+case _Fetch() when fetch != null:
+return fetch(_that);case _ToggleQuestion() when toggleQuestion != null:
+return toggleQuestion(_that);case _Submit() when submit != null:
+return submit(_that);case _DownloadPdf() when downloadPdf != null:
+return downloadPdf(_that);case _OpenPdf() when openPdf != null:
+return openPdf(_that);case _Reset() when reset != null:
 return reset(_that);case _:
   return orElse();
 
@@ -78,11 +82,15 @@ return reset(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _ToggleQuestion value)  toggleQuestion,required TResult Function( _Reset value)  reset,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Fetch value)  fetch,required TResult Function( _ToggleQuestion value)  toggleQuestion,required TResult Function( _Submit value)  submit,required TResult Function( _DownloadPdf value)  downloadPdf,required TResult Function( _OpenPdf value)  openPdf,required TResult Function( _Reset value)  reset,}){
 final _that = this;
 switch (_that) {
-case _ToggleQuestion():
-return toggleQuestion(_that);case _Reset():
+case _Fetch():
+return fetch(_that);case _ToggleQuestion():
+return toggleQuestion(_that);case _Submit():
+return submit(_that);case _DownloadPdf():
+return downloadPdf(_that);case _OpenPdf():
+return openPdf(_that);case _Reset():
 return reset(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -100,11 +108,15 @@ return reset(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _ToggleQuestion value)?  toggleQuestion,TResult? Function( _Reset value)?  reset,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Fetch value)?  fetch,TResult? Function( _ToggleQuestion value)?  toggleQuestion,TResult? Function( _Submit value)?  submit,TResult? Function( _DownloadPdf value)?  downloadPdf,TResult? Function( _OpenPdf value)?  openPdf,TResult? Function( _Reset value)?  reset,}){
 final _that = this;
 switch (_that) {
-case _ToggleQuestion() when toggleQuestion != null:
-return toggleQuestion(_that);case _Reset() when reset != null:
+case _Fetch() when fetch != null:
+return fetch(_that);case _ToggleQuestion() when toggleQuestion != null:
+return toggleQuestion(_that);case _Submit() when submit != null:
+return submit(_that);case _DownloadPdf() when downloadPdf != null:
+return downloadPdf(_that);case _OpenPdf() when openPdf != null:
+return openPdf(_that);case _Reset() when reset != null:
 return reset(_that);case _:
   return null;
 
@@ -122,10 +134,14 @@ return reset(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( int questionId)?  toggleQuestion,TResult Function()?  reset,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetch,TResult Function( String questionId)?  toggleQuestion,TResult Function( String idUser)?  submit,TResult Function( int riwayatId)?  downloadPdf,TResult Function( int riwayatId)?  openPdf,TResult Function()?  reset,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _ToggleQuestion() when toggleQuestion != null:
-return toggleQuestion(_that.questionId);case _Reset() when reset != null:
+case _Fetch() when fetch != null:
+return fetch();case _ToggleQuestion() when toggleQuestion != null:
+return toggleQuestion(_that.questionId);case _Submit() when submit != null:
+return submit(_that.idUser);case _DownloadPdf() when downloadPdf != null:
+return downloadPdf(_that.riwayatId);case _OpenPdf() when openPdf != null:
+return openPdf(_that.riwayatId);case _Reset() when reset != null:
 return reset();case _:
   return orElse();
 
@@ -144,10 +160,14 @@ return reset();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( int questionId)  toggleQuestion,required TResult Function()  reset,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetch,required TResult Function( String questionId)  toggleQuestion,required TResult Function( String idUser)  submit,required TResult Function( int riwayatId)  downloadPdf,required TResult Function( int riwayatId)  openPdf,required TResult Function()  reset,}) {final _that = this;
 switch (_that) {
-case _ToggleQuestion():
-return toggleQuestion(_that.questionId);case _Reset():
+case _Fetch():
+return fetch();case _ToggleQuestion():
+return toggleQuestion(_that.questionId);case _Submit():
+return submit(_that.idUser);case _DownloadPdf():
+return downloadPdf(_that.riwayatId);case _OpenPdf():
+return openPdf(_that.riwayatId);case _Reset():
 return reset();case _:
   throw StateError('Unexpected subclass');
 
@@ -165,10 +185,14 @@ return reset();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( int questionId)?  toggleQuestion,TResult? Function()?  reset,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetch,TResult? Function( String questionId)?  toggleQuestion,TResult? Function( String idUser)?  submit,TResult? Function( int riwayatId)?  downloadPdf,TResult? Function( int riwayatId)?  openPdf,TResult? Function()?  reset,}) {final _that = this;
 switch (_that) {
-case _ToggleQuestion() when toggleQuestion != null:
-return toggleQuestion(_that.questionId);case _Reset() when reset != null:
+case _Fetch() when fetch != null:
+return fetch();case _ToggleQuestion() when toggleQuestion != null:
+return toggleQuestion(_that.questionId);case _Submit() when submit != null:
+return submit(_that.idUser);case _DownloadPdf() when downloadPdf != null:
+return downloadPdf(_that.riwayatId);case _OpenPdf() when openPdf != null:
+return openPdf(_that.riwayatId);case _Reset() when reset != null:
 return reset();case _:
   return null;
 
@@ -180,11 +204,43 @@ return reset();case _:
 /// @nodoc
 
 
+class _Fetch implements ConsultationEvent {
+  const _Fetch();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Fetch);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ConsultationEvent.fetch()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
 class _ToggleQuestion implements ConsultationEvent {
   const _ToggleQuestion(this.questionId);
   
 
- final  int questionId;
+ final  String questionId;
 
 /// Create a copy of ConsultationEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -216,7 +272,7 @@ abstract mixin class _$ToggleQuestionCopyWith<$Res> implements $ConsultationEven
   factory _$ToggleQuestionCopyWith(_ToggleQuestion value, $Res Function(_ToggleQuestion) _then) = __$ToggleQuestionCopyWithImpl;
 @useResult
 $Res call({
- int questionId
+ String questionId
 });
 
 
@@ -236,6 +292,204 @@ class __$ToggleQuestionCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? questionId = null,}) {
   return _then(_ToggleQuestion(
 null == questionId ? _self.questionId : questionId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _Submit implements ConsultationEvent {
+  const _Submit({required this.idUser});
+  
+
+ final  String idUser;
+
+/// Create a copy of ConsultationEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SubmitCopyWith<_Submit> get copyWith => __$SubmitCopyWithImpl<_Submit>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Submit&&(identical(other.idUser, idUser) || other.idUser == idUser));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,idUser);
+
+@override
+String toString() {
+  return 'ConsultationEvent.submit(idUser: $idUser)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SubmitCopyWith<$Res> implements $ConsultationEventCopyWith<$Res> {
+  factory _$SubmitCopyWith(_Submit value, $Res Function(_Submit) _then) = __$SubmitCopyWithImpl;
+@useResult
+$Res call({
+ String idUser
+});
+
+
+
+
+}
+/// @nodoc
+class __$SubmitCopyWithImpl<$Res>
+    implements _$SubmitCopyWith<$Res> {
+  __$SubmitCopyWithImpl(this._self, this._then);
+
+  final _Submit _self;
+  final $Res Function(_Submit) _then;
+
+/// Create a copy of ConsultationEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? idUser = null,}) {
+  return _then(_Submit(
+idUser: null == idUser ? _self.idUser : idUser // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _DownloadPdf implements ConsultationEvent {
+  const _DownloadPdf({required this.riwayatId});
+  
+
+ final  int riwayatId;
+
+/// Create a copy of ConsultationEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$DownloadPdfCopyWith<_DownloadPdf> get copyWith => __$DownloadPdfCopyWithImpl<_DownloadPdf>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DownloadPdf&&(identical(other.riwayatId, riwayatId) || other.riwayatId == riwayatId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,riwayatId);
+
+@override
+String toString() {
+  return 'ConsultationEvent.downloadPdf(riwayatId: $riwayatId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$DownloadPdfCopyWith<$Res> implements $ConsultationEventCopyWith<$Res> {
+  factory _$DownloadPdfCopyWith(_DownloadPdf value, $Res Function(_DownloadPdf) _then) = __$DownloadPdfCopyWithImpl;
+@useResult
+$Res call({
+ int riwayatId
+});
+
+
+
+
+}
+/// @nodoc
+class __$DownloadPdfCopyWithImpl<$Res>
+    implements _$DownloadPdfCopyWith<$Res> {
+  __$DownloadPdfCopyWithImpl(this._self, this._then);
+
+  final _DownloadPdf _self;
+  final $Res Function(_DownloadPdf) _then;
+
+/// Create a copy of ConsultationEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? riwayatId = null,}) {
+  return _then(_DownloadPdf(
+riwayatId: null == riwayatId ? _self.riwayatId : riwayatId // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _OpenPdf implements ConsultationEvent {
+  const _OpenPdf({required this.riwayatId});
+  
+
+ final  int riwayatId;
+
+/// Create a copy of ConsultationEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OpenPdfCopyWith<_OpenPdf> get copyWith => __$OpenPdfCopyWithImpl<_OpenPdf>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OpenPdf&&(identical(other.riwayatId, riwayatId) || other.riwayatId == riwayatId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,riwayatId);
+
+@override
+String toString() {
+  return 'ConsultationEvent.openPdf(riwayatId: $riwayatId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$OpenPdfCopyWith<$Res> implements $ConsultationEventCopyWith<$Res> {
+  factory _$OpenPdfCopyWith(_OpenPdf value, $Res Function(_OpenPdf) _then) = __$OpenPdfCopyWithImpl;
+@useResult
+$Res call({
+ int riwayatId
+});
+
+
+
+
+}
+/// @nodoc
+class __$OpenPdfCopyWithImpl<$Res>
+    implements _$OpenPdfCopyWith<$Res> {
+  __$OpenPdfCopyWithImpl(this._self, this._then);
+
+  final _OpenPdf _self;
+  final $Res Function(_OpenPdf) _then;
+
+/// Create a copy of ConsultationEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? riwayatId = null,}) {
+  return _then(_OpenPdf(
+riwayatId: null == riwayatId ? _self.riwayatId : riwayatId // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }
@@ -278,7 +532,7 @@ String toString() {
 /// @nodoc
 mixin _$ConsultationState {
 
- List<int> get selectedQuestionIds;
+ ConsultationStatus get status; List<IndicatorModel> get indicators; List<String> get selectedQuestionIds; String get error; DiagnosisResponseModel? get diagnosis; String? get pdfUrl; String? get pdfPath;
 /// Create a copy of ConsultationState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -289,16 +543,16 @@ $ConsultationStateCopyWith<ConsultationState> get copyWith => _$ConsultationStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConsultationState&&const DeepCollectionEquality().equals(other.selectedQuestionIds, selectedQuestionIds));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConsultationState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.indicators, indicators)&&const DeepCollectionEquality().equals(other.selectedQuestionIds, selectedQuestionIds)&&(identical(other.error, error) || other.error == error)&&(identical(other.diagnosis, diagnosis) || other.diagnosis == diagnosis)&&(identical(other.pdfUrl, pdfUrl) || other.pdfUrl == pdfUrl)&&(identical(other.pdfPath, pdfPath) || other.pdfPath == pdfPath));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(selectedQuestionIds));
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(indicators),const DeepCollectionEquality().hash(selectedQuestionIds),error,diagnosis,pdfUrl,pdfPath);
 
 @override
 String toString() {
-  return 'ConsultationState(selectedQuestionIds: $selectedQuestionIds)';
+  return 'ConsultationState(status: $status, indicators: $indicators, selectedQuestionIds: $selectedQuestionIds, error: $error, diagnosis: $diagnosis, pdfUrl: $pdfUrl, pdfPath: $pdfPath)';
 }
 
 
@@ -309,11 +563,11 @@ abstract mixin class $ConsultationStateCopyWith<$Res>  {
   factory $ConsultationStateCopyWith(ConsultationState value, $Res Function(ConsultationState) _then) = _$ConsultationStateCopyWithImpl;
 @useResult
 $Res call({
- List<int> selectedQuestionIds
+ ConsultationStatus status, List<IndicatorModel> indicators, List<String> selectedQuestionIds, String error, DiagnosisResponseModel? diagnosis, String? pdfUrl, String? pdfPath
 });
 
 
-
+$DiagnosisResponseModelCopyWith<$Res>? get diagnosis;
 
 }
 /// @nodoc
@@ -326,13 +580,31 @@ class _$ConsultationStateCopyWithImpl<$Res>
 
 /// Create a copy of ConsultationState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? selectedQuestionIds = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? indicators = null,Object? selectedQuestionIds = null,Object? error = null,Object? diagnosis = freezed,Object? pdfUrl = freezed,Object? pdfPath = freezed,}) {
   return _then(_self.copyWith(
-selectedQuestionIds: null == selectedQuestionIds ? _self.selectedQuestionIds : selectedQuestionIds // ignore: cast_nullable_to_non_nullable
-as List<int>,
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as ConsultationStatus,indicators: null == indicators ? _self.indicators : indicators // ignore: cast_nullable_to_non_nullable
+as List<IndicatorModel>,selectedQuestionIds: null == selectedQuestionIds ? _self.selectedQuestionIds : selectedQuestionIds // ignore: cast_nullable_to_non_nullable
+as List<String>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String,diagnosis: freezed == diagnosis ? _self.diagnosis : diagnosis // ignore: cast_nullable_to_non_nullable
+as DiagnosisResponseModel?,pdfUrl: freezed == pdfUrl ? _self.pdfUrl : pdfUrl // ignore: cast_nullable_to_non_nullable
+as String?,pdfPath: freezed == pdfPath ? _self.pdfPath : pdfPath // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
+/// Create a copy of ConsultationState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$DiagnosisResponseModelCopyWith<$Res>? get diagnosis {
+    if (_self.diagnosis == null) {
+    return null;
+  }
 
+  return $DiagnosisResponseModelCopyWith<$Res>(_self.diagnosis!, (value) {
+    return _then(_self.copyWith(diagnosis: value));
+  });
+}
 }
 
 
@@ -414,10 +686,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<int> selectedQuestionIds)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ConsultationStatus status,  List<IndicatorModel> indicators,  List<String> selectedQuestionIds,  String error,  DiagnosisResponseModel? diagnosis,  String? pdfUrl,  String? pdfPath)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ConsultationState() when $default != null:
-return $default(_that.selectedQuestionIds);case _:
+return $default(_that.status,_that.indicators,_that.selectedQuestionIds,_that.error,_that.diagnosis,_that.pdfUrl,_that.pdfPath);case _:
   return orElse();
 
 }
@@ -435,10 +707,10 @@ return $default(_that.selectedQuestionIds);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<int> selectedQuestionIds)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ConsultationStatus status,  List<IndicatorModel> indicators,  List<String> selectedQuestionIds,  String error,  DiagnosisResponseModel? diagnosis,  String? pdfUrl,  String? pdfPath)  $default,) {final _that = this;
 switch (_that) {
 case _ConsultationState():
-return $default(_that.selectedQuestionIds);case _:
+return $default(_that.status,_that.indicators,_that.selectedQuestionIds,_that.error,_that.diagnosis,_that.pdfUrl,_that.pdfPath);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -455,10 +727,10 @@ return $default(_that.selectedQuestionIds);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<int> selectedQuestionIds)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ConsultationStatus status,  List<IndicatorModel> indicators,  List<String> selectedQuestionIds,  String error,  DiagnosisResponseModel? diagnosis,  String? pdfUrl,  String? pdfPath)?  $default,) {final _that = this;
 switch (_that) {
 case _ConsultationState() when $default != null:
-return $default(_that.selectedQuestionIds);case _:
+return $default(_that.status,_that.indicators,_that.selectedQuestionIds,_that.error,_that.diagnosis,_that.pdfUrl,_that.pdfPath);case _:
   return null;
 
 }
@@ -470,16 +742,28 @@ return $default(_that.selectedQuestionIds);case _:
 
 
 class _ConsultationState implements ConsultationState {
-  const _ConsultationState({final  List<int> selectedQuestionIds = const <int>[]}): _selectedQuestionIds = selectedQuestionIds;
+  const _ConsultationState({this.status = ConsultationStatus.initial, final  List<IndicatorModel> indicators = const [], final  List<String> selectedQuestionIds = const [], this.error = '', this.diagnosis = null, this.pdfUrl, this.pdfPath = null}): _indicators = indicators,_selectedQuestionIds = selectedQuestionIds;
   
 
- final  List<int> _selectedQuestionIds;
-@override@JsonKey() List<int> get selectedQuestionIds {
+@override@JsonKey() final  ConsultationStatus status;
+ final  List<IndicatorModel> _indicators;
+@override@JsonKey() List<IndicatorModel> get indicators {
+  if (_indicators is EqualUnmodifiableListView) return _indicators;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_indicators);
+}
+
+ final  List<String> _selectedQuestionIds;
+@override@JsonKey() List<String> get selectedQuestionIds {
   if (_selectedQuestionIds is EqualUnmodifiableListView) return _selectedQuestionIds;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_selectedQuestionIds);
 }
 
+@override@JsonKey() final  String error;
+@override@JsonKey() final  DiagnosisResponseModel? diagnosis;
+@override final  String? pdfUrl;
+@override@JsonKey() final  String? pdfPath;
 
 /// Create a copy of ConsultationState
 /// with the given fields replaced by the non-null parameter values.
@@ -491,16 +775,16 @@ _$ConsultationStateCopyWith<_ConsultationState> get copyWith => __$ConsultationS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConsultationState&&const DeepCollectionEquality().equals(other._selectedQuestionIds, _selectedQuestionIds));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ConsultationState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._indicators, _indicators)&&const DeepCollectionEquality().equals(other._selectedQuestionIds, _selectedQuestionIds)&&(identical(other.error, error) || other.error == error)&&(identical(other.diagnosis, diagnosis) || other.diagnosis == diagnosis)&&(identical(other.pdfUrl, pdfUrl) || other.pdfUrl == pdfUrl)&&(identical(other.pdfPath, pdfPath) || other.pdfPath == pdfPath));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_selectedQuestionIds));
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_indicators),const DeepCollectionEquality().hash(_selectedQuestionIds),error,diagnosis,pdfUrl,pdfPath);
 
 @override
 String toString() {
-  return 'ConsultationState(selectedQuestionIds: $selectedQuestionIds)';
+  return 'ConsultationState(status: $status, indicators: $indicators, selectedQuestionIds: $selectedQuestionIds, error: $error, diagnosis: $diagnosis, pdfUrl: $pdfUrl, pdfPath: $pdfPath)';
 }
 
 
@@ -511,11 +795,11 @@ abstract mixin class _$ConsultationStateCopyWith<$Res> implements $ConsultationS
   factory _$ConsultationStateCopyWith(_ConsultationState value, $Res Function(_ConsultationState) _then) = __$ConsultationStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<int> selectedQuestionIds
+ ConsultationStatus status, List<IndicatorModel> indicators, List<String> selectedQuestionIds, String error, DiagnosisResponseModel? diagnosis, String? pdfUrl, String? pdfPath
 });
 
 
-
+@override $DiagnosisResponseModelCopyWith<$Res>? get diagnosis;
 
 }
 /// @nodoc
@@ -528,14 +812,32 @@ class __$ConsultationStateCopyWithImpl<$Res>
 
 /// Create a copy of ConsultationState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? selectedQuestionIds = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? indicators = null,Object? selectedQuestionIds = null,Object? error = null,Object? diagnosis = freezed,Object? pdfUrl = freezed,Object? pdfPath = freezed,}) {
   return _then(_ConsultationState(
-selectedQuestionIds: null == selectedQuestionIds ? _self._selectedQuestionIds : selectedQuestionIds // ignore: cast_nullable_to_non_nullable
-as List<int>,
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as ConsultationStatus,indicators: null == indicators ? _self._indicators : indicators // ignore: cast_nullable_to_non_nullable
+as List<IndicatorModel>,selectedQuestionIds: null == selectedQuestionIds ? _self._selectedQuestionIds : selectedQuestionIds // ignore: cast_nullable_to_non_nullable
+as List<String>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String,diagnosis: freezed == diagnosis ? _self.diagnosis : diagnosis // ignore: cast_nullable_to_non_nullable
+as DiagnosisResponseModel?,pdfUrl: freezed == pdfUrl ? _self.pdfUrl : pdfUrl // ignore: cast_nullable_to_non_nullable
+as String?,pdfPath: freezed == pdfPath ? _self.pdfPath : pdfPath // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
+/// Create a copy of ConsultationState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$DiagnosisResponseModelCopyWith<$Res>? get diagnosis {
+    if (_self.diagnosis == null) {
+    return null;
+  }
 
+  return $DiagnosisResponseModelCopyWith<$Res>(_self.diagnosis!, (value) {
+    return _then(_self.copyWith(diagnosis: value));
+  });
+}
 }
 
 // dart format on

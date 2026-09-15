@@ -23,6 +23,7 @@ abstract class AssessmentModel with _$AssessmentModel {
     String? title,
     String? description,
     String? icon,
+    String? email,
   }) = _AssessmentModel;
 
   factory AssessmentModel.fromJson(Map<String, dynamic> json) =>

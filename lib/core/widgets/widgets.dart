@@ -19,3 +19,4 @@ export 'logo_marquee.dart';
 export 'cards/cards.dart';
 export 'consultation_section_tab.dart';
 export 'consultation_tab_content.dart';
+export 'history_list_item.dart';

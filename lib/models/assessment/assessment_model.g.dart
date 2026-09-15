@@ -11,6 +11,7 @@ _AssessmentModel _$AssessmentModelFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String?,
       description: json['description'] as String?,
       icon: json['icon'] as String?,
+      email: json['email'] as String?,
     );
 
 Map<String, dynamic> _$AssessmentModelToJson(_AssessmentModel instance) =>
@@ -18,4 +19,5 @@ Map<String, dynamic> _$AssessmentModelToJson(_AssessmentModel instance) =>
       'title': instance.title,
       'description': instance.description,
       'icon': instance.icon,
+      'email': instance.email,
     };

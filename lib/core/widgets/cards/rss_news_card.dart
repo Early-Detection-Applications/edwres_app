@@ -38,13 +38,37 @@ class RssNewsCard extends StatelessWidget {
                   Positioned.fill(
                     child:
                         newsModel.image != null && newsModel.image!.isNotEmpty
-                        ? Image.network(
-                            newsModel.image!,
-                            fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) =>
-                                const Icon(Icons.image_not_supported),
+                        ? Container(
+                            color: AppColor.primaryBold,
+                            child: Image.network(
+                              newsModel.image!,
+                              fit: BoxFit.cover,
+                              loadingBuilder: (context, child, progress) {
+                                if (progress == null) return child;
+
+                                return const Center(
+                                  child: CircularProgressIndicator(
+                                    color: AppColor.secondary,
+                                  ),
+                                );
+                              },
+                              errorBuilder: (_, __, ___) => const Center(
+                                child: Icon(
+                                  Icons.image_not_supported,
+                                  color: AppColor.gray,
+                                ),
+                              ),
+                            ),
                           )
-                        : const Icon(Icons.image_not_supported),
+                        : const ColoredBox(
+                            color: AppColor.primaryBold,
+                            child: Center(
+                              child: Icon(
+                                Icons.image_not_supported,
+                                color: AppColor.gray,
+                              ),
+                            ),
+                          ),
                   ),
                 ],
               ),

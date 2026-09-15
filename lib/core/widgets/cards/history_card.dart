@@ -13,10 +13,13 @@
 // limitations under the License.
 
 import 'package:edwres_app/app/app.dart';
+import 'package:edwres_app/models/detection_history/detection_history.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HistoryCard extends StatelessWidget {
-  const HistoryCard({super.key});
+  final List<DetectionHistoryModel> data;
+  const HistoryCard({super.key, this.data = const []});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class HistoryCard extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 8),
-          Text('0', style: AppTextStyle.headlineLg),
+          Text(data.length.toString(), style: AppTextStyle.headlineLg),
           const SizedBox(height: 8),
           Text('Riwayat Konsultasi', style: AppTextStyle.labelMd),
           const SizedBox(height: 8),
@@ -44,13 +47,7 @@ class HistoryCard extends StatelessWidget {
             width: double.infinity,
             child: InkWell(
               onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      'Fitur belum tersedia. Sedang dalam proses pengembangan',
-                    ),
-                  ),
-                );
+                GoRouter.of(context).pushNamed(AppRoutes.detectionHistory);
               },
               child: Padding(
                 padding: const EdgeInsets.all(8),

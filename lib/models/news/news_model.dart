@@ -30,6 +30,8 @@ abstract class NewsModel with _$NewsModel {
     @JsonKey(name: 'tanggal') DateTime? tanggal,
     @JsonKey(name: 'counter') String? counter,
     @JsonKey(name: 'jenis_berita') String? jenisBerita,
+    @JsonKey(name: 'namaLengkap') String? namaLengkap,
+    @JsonKey(name: 'namaKategori') String? namaKategori,
     @JsonKey(name: 'kategori') KategoriModel? kategori,
     @JsonKey(name: 'user') UserModel? user,
   }) = _NewsModel;

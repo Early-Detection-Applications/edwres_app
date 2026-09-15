@@ -24,7 +24,7 @@ class WelcomeCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: AppColor.border,
+        color: Colors.lightBlue,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Padding(
@@ -33,12 +33,12 @@ class WelcomeCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Selamat Datang ${SessionManager.username}!',
+              'Selamat Datang, ${SessionManager.username?.isNotEmpty == true ? '${SessionManager.username?[0].toUpperCase()}${SessionManager.username?.substring(1)}' : ''}!',
               style: AppTextStyle.titleMd,
             ),
             const SizedBox(height: 8),
             Text(
-              'Anda login sebagai ${SessionManager.level}. Silahkan gunakan menu di sidebar untuk melakukan konsultasi.',
+              'Anda login sebagai ${SessionManager.level?[0].toUpperCase()}${SessionManager.level?.substring(1)}. Silahkan gunakan menu di sidebar untuk melakukan konsultasi.',
               style: AppTextStyle.bodySm,
             ),
           ],

@@ -14,9 +14,35 @@
 
 part of 'consultation_bloc.dart';
 
+enum ConsultationStatus {
+  initial,
+  loading,
+  loaded,
+  error,
+  submitting,
+  submitted,
+  downloadingPdf,
+  pdfReady;
+
+  bool get isInitial => this == ConsultationStatus.initial;
+  bool get isLoading => this == ConsultationStatus.loading;
+  bool get isLoaded => this == ConsultationStatus.loaded;
+  bool get isError => this == ConsultationStatus.error;
+  bool get isSubmitting => this == ConsultationStatus.submitting;
+  bool get isSubmitted => this == ConsultationStatus.submitted;
+  bool get isDownloadingPdf => this == ConsultationStatus.downloadingPdf;
+  bool get isPdfReady => this == ConsultationStatus.pdfReady;
+}
+
 @freezed
 abstract class ConsultationState with _$ConsultationState {
   const factory ConsultationState({
-    @Default(<int>[]) List<int> selectedQuestionIds,
+    @Default(ConsultationStatus.initial) ConsultationStatus status,
+    @Default([]) List<IndicatorModel> indicators,
+    @Default([]) List<String> selectedQuestionIds,
+    @Default('') String error,
+    @Default(null) DiagnosisResponseModel? diagnosis,
+    String? pdfUrl,
+    @Default(null) String? pdfPath,
   }) = _ConsultationState;
 }

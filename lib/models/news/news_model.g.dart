@@ -18,6 +18,8 @@ _NewsModel _$NewsModelFromJson(Map<String, dynamic> json) => _NewsModel(
       : DateTime.parse(json['tanggal'] as String),
   counter: json['counter'] as String?,
   jenisBerita: json['jenis_berita'] as String?,
+  namaLengkap: json['namaLengkap'] as String?,
+  namaKategori: json['namaKategori'] as String?,
   kategori: json['kategori'] == null
       ? null
       : KategoriModel.fromJson(json['kategori'] as Map<String, dynamic>),
@@ -37,6 +39,8 @@ Map<String, dynamic> _$NewsModelToJson(_NewsModel instance) =>
       'tanggal': instance.tanggal?.toIso8601String(),
       'counter': instance.counter,
       'jenis_berita': instance.jenisBerita,
+      'namaLengkap': instance.namaLengkap,
+      'namaKategori': instance.namaKategori,
       'kategori': instance.kategori,
       'user': instance.user,
     };

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AssessmentModel {
 
- String? get title; String? get description; String? get icon;
+ String? get title; String? get description; String? get icon; String? get email;
 /// Create a copy of AssessmentModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $AssessmentModelCopyWith<AssessmentModel> get copyWith => _$AssessmentModelCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AssessmentModel&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.icon, icon) || other.icon == icon));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AssessmentModel&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.email, email) || other.email == email));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,description,icon);
+int get hashCode => Object.hash(runtimeType,title,description,icon,email);
 
 @override
 String toString() {
-  return 'AssessmentModel(title: $title, description: $description, icon: $icon)';
+  return 'AssessmentModel(title: $title, description: $description, icon: $icon, email: $email)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $AssessmentModelCopyWith<$Res>  {
   factory $AssessmentModelCopyWith(AssessmentModel value, $Res Function(AssessmentModel) _then) = _$AssessmentModelCopyWithImpl;
 @useResult
 $Res call({
- String? title, String? description, String? icon
+ String? title, String? description, String? icon, String? email
 });
 
 
@@ -65,11 +65,12 @@ class _$AssessmentModelCopyWithImpl<$Res>
 
 /// Create a copy of AssessmentModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = freezed,Object? description = freezed,Object? icon = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? title = freezed,Object? description = freezed,Object? icon = freezed,Object? email = freezed,}) {
   return _then(_self.copyWith(
 title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,icon: freezed == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
+as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -155,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? title,  String? description,  String? icon)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? title,  String? description,  String? icon,  String? email)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AssessmentModel() when $default != null:
-return $default(_that.title,_that.description,_that.icon);case _:
+return $default(_that.title,_that.description,_that.icon,_that.email);case _:
   return orElse();
 
 }
@@ -176,10 +177,10 @@ return $default(_that.title,_that.description,_that.icon);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? title,  String? description,  String? icon)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? title,  String? description,  String? icon,  String? email)  $default,) {final _that = this;
 switch (_that) {
 case _AssessmentModel():
-return $default(_that.title,_that.description,_that.icon);case _:
+return $default(_that.title,_that.description,_that.icon,_that.email);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +197,10 @@ return $default(_that.title,_that.description,_that.icon);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? title,  String? description,  String? icon)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? title,  String? description,  String? icon,  String? email)?  $default,) {final _that = this;
 switch (_that) {
 case _AssessmentModel() when $default != null:
-return $default(_that.title,_that.description,_that.icon);case _:
+return $default(_that.title,_that.description,_that.icon,_that.email);case _:
   return null;
 
 }
@@ -211,12 +212,13 @@ return $default(_that.title,_that.description,_that.icon);case _:
 @JsonSerializable()
 
 class _AssessmentModel implements AssessmentModel {
-  const _AssessmentModel({this.title, this.description, this.icon});
+  const _AssessmentModel({this.title, this.description, this.icon, this.email});
   factory _AssessmentModel.fromJson(Map<String, dynamic> json) => _$AssessmentModelFromJson(json);
 
 @override final  String? title;
 @override final  String? description;
 @override final  String? icon;
+@override final  String? email;
 
 /// Create a copy of AssessmentModel
 /// with the given fields replaced by the non-null parameter values.
@@ -231,16 +233,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AssessmentModel&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.icon, icon) || other.icon == icon));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AssessmentModel&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.email, email) || other.email == email));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,description,icon);
+int get hashCode => Object.hash(runtimeType,title,description,icon,email);
 
 @override
 String toString() {
-  return 'AssessmentModel(title: $title, description: $description, icon: $icon)';
+  return 'AssessmentModel(title: $title, description: $description, icon: $icon, email: $email)';
 }
 
 
@@ -251,7 +253,7 @@ abstract mixin class _$AssessmentModelCopyWith<$Res> implements $AssessmentModel
   factory _$AssessmentModelCopyWith(_AssessmentModel value, $Res Function(_AssessmentModel) _then) = __$AssessmentModelCopyWithImpl;
 @override @useResult
 $Res call({
- String? title, String? description, String? icon
+ String? title, String? description, String? icon, String? email
 });
 
 
@@ -268,11 +270,12 @@ class __$AssessmentModelCopyWithImpl<$Res>
 
 /// Create a copy of AssessmentModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = freezed,Object? description = freezed,Object? icon = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? title = freezed,Object? description = freezed,Object? icon = freezed,Object? email = freezed,}) {
   return _then(_AssessmentModel(
 title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,icon: freezed == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
+as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

@@ -14,117 +14,133 @@
 
 import 'package:edwres_app/app/theme/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 abstract final class AppTextStyle {
   const AppTextStyle._();
 
+  // ============================================================
   // Display
-  static const TextStyle displayLg = TextStyle(
-    fontSize: 57,
+  // ============================================================
+
+  static final TextStyle displayLg = GoogleFonts.poppins(
+    fontSize: 40,
     fontWeight: FontWeight.w700,
-    height: 1.12,
+    height: 1.15,
     color: AppColor.background,
   );
 
-  static const TextStyle displayMd = TextStyle(
-    fontSize: 45,
-    fontWeight: FontWeight.w700,
-    height: 1.16,
-    color: AppColor.background,
-  );
-
-  static const TextStyle displaySm = TextStyle(
+  static final TextStyle displayMd = GoogleFonts.poppins(
     fontSize: 36,
     fontWeight: FontWeight.w700,
-    height: 1.22,
+    height: 1.20,
     color: AppColor.background,
   );
 
-  // Headline
-  static const TextStyle headlineLg = TextStyle(
+  static final TextStyle displaySm = GoogleFonts.poppins(
     fontSize: 32,
     fontWeight: FontWeight.w700,
     height: 1.25,
     color: AppColor.background,
   );
 
-  static const TextStyle headlineMd = TextStyle(
+  // ============================================================
+  // Headline
+  // ============================================================
+
+  static final TextStyle headlineLg = GoogleFonts.poppins(
     fontSize: 28,
     fontWeight: FontWeight.w700,
-    height: 1.28,
+    height: 1.25,
     color: AppColor.background,
   );
 
-  static const TextStyle headlineSm = TextStyle(
+  static final TextStyle headlineMd = GoogleFonts.poppins(
     fontSize: 24,
     fontWeight: FontWeight.w700,
-    height: 1.33,
+    height: 1.30,
     color: AppColor.background,
   );
 
-  // Title
-  static const TextStyle titleLg = TextStyle(
+  static final TextStyle headlineSm = GoogleFonts.poppins(
     fontSize: 22,
-    fontWeight: FontWeight.w600,
-    height: 1.27,
+    fontWeight: FontWeight.w700,
+    height: 1.32,
     color: AppColor.background,
   );
 
-  static const TextStyle titleMd = TextStyle(
-    fontSize: 16,
+  // ============================================================
+  // Title
+  // ============================================================
+
+  static final TextStyle titleLg = GoogleFonts.poppins(
+    fontSize: 20,
     fontWeight: FontWeight.w600,
-    height: 1.50,
+    height: 1.30,
     color: AppColor.background,
   );
 
-  static const TextStyle titleSm = TextStyle(
-    fontSize: 14,
+  static final TextStyle titleMd = GoogleFonts.poppins(
+    fontSize: 15,
     fontWeight: FontWeight.w600,
-    height: 1.43,
+    height: 1.45,
     color: AppColor.background,
   );
 
+  static final TextStyle titleSm = GoogleFonts.poppins(
+    fontSize: 13,
+    fontWeight: FontWeight.w600,
+    height: 1.45,
+    color: AppColor.background,
+  );
+
+  // ============================================================
   // Body
-  static const TextStyle bodyLg = TextStyle(
-    fontSize: 16,
+  // ============================================================
+
+  static final TextStyle bodyLg = GoogleFonts.poppins(
+    fontSize: 15,
     fontWeight: FontWeight.w400,
     height: 1.50,
     color: AppColor.background,
   );
 
-  static const TextStyle bodyMd = TextStyle(
-    fontSize: 14,
+  static final TextStyle bodyMd = GoogleFonts.poppins(
+    fontSize: 13,
     fontWeight: FontWeight.w400,
-    height: 1.43,
+    height: 1.45,
     color: AppColor.background,
   );
 
-  static const TextStyle bodySm = TextStyle(
+  static final TextStyle bodySm = GoogleFonts.poppins(
     fontSize: 12,
     fontWeight: FontWeight.w400,
-    height: 1.33,
+    height: 1.35,
     color: AppColor.background,
   );
 
+  // ============================================================
   // Label
-  static const TextStyle labelLg = TextStyle(
-    fontSize: 14,
+  // ============================================================
+
+  static final TextStyle labelLg = GoogleFonts.poppins(
+    fontSize: 13,
     fontWeight: FontWeight.w500,
-    height: 1.43,
+    height: 1.40,
     color: AppColor.background,
   );
 
-  static const TextStyle labelMd = TextStyle(
+  static final TextStyle labelMd = GoogleFonts.poppins(
     fontSize: 12,
     fontWeight: FontWeight.w500,
-    height: 1.33,
+    height: 1.35,
     color: AppColor.background,
   );
 
-  static const TextStyle labelSm = TextStyle(
+  static final TextStyle labelSm = GoogleFonts.poppins(
     fontSize: 11,
     fontWeight: FontWeight.w500,
-    height: 1.45,
+    height: 1.40,
     color: AppColor.background,
   );
 }

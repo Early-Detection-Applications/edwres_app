@@ -26,6 +26,7 @@ class GuestbookBloc extends Bloc<GuestbookEvent, GuestbookState> {
 
   GuestbookBloc(this._guestbookRepository) : super(const GuestbookState()) {
     on<_Fetch>(_onFetch);
+    on<_Create>(_onCreate);
   }
 
   Future<void> _onFetch(event, Emitter<GuestbookState> emit) async {
@@ -43,6 +44,35 @@ class GuestbookBloc extends Bloc<GuestbookEvent, GuestbookState> {
     } catch (e) {
       emit(
         state.copyWith(status: GuestbookStateStatus.error, error: e.toString()),
+      );
+    }
+  }
+
+  Future<void> _onCreate(_Create event, Emitter<GuestbookState> emit) async {
+    emit(
+      state.copyWith(
+        createStatus: GuestbookStateStatus.loading,
+        createError: '',
+      ),
+    );
+
+    try {
+      await _guestbookRepository.createGuestbook(
+        nama: event.nama,
+        email: event.email,
+        pesan: event.pesan,
+        turnstileToken: event.turnstileToken,
+      );
+
+      emit(state.copyWith(createStatus: GuestbookStateStatus.loaded));
+
+      add(const GuestbookEvent.fetch());
+    } catch (e) {
+      emit(
+        state.copyWith(
+          createStatus: GuestbookStateStatus.error,
+          createError: e.toString(),
+        ),
       );
     }
   }

@@ -51,4 +51,38 @@ class UserRepository {
 
     throw Exception('Terjadi kesalahan pada server');
   }
+
+  Future<String> register({
+    required String username,
+    required String password,
+    required String namaLengkap,
+    required String email,
+  }) async {
+    final response = await _dio.post(
+      dotenv.get('BASE_URL') + ApiEndpoints.register,
+      data: {
+        'username': username,
+        'password': password,
+        'nama_lengkap': namaLengkap,
+        'email': email,
+      },
+      options: Options(contentType: Headers.formUrlEncodedContentType),
+    );
+
+    if (response.statusCode == 200) {
+      final data = response.data;
+
+      if (data is Map<String, dynamic>) {
+        if (data['status'] == 'success') {
+          return data['message']?.toString() ?? 'Registrasi berhasil';
+        }
+
+        throw Exception(data['message']?.toString() ?? 'Registrasi gagal');
+      }
+
+      return 'Registrasi berhasil';
+    }
+
+    throw Exception('Terjadi kesalahan pada server');
+  }
 }

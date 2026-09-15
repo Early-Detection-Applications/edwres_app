@@ -13,3 +13,4 @@
 // limitations under the License.
 
 export 'consultation_screen.dart';
+export 'consultation_result_screen.dart';

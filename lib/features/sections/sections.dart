@@ -16,6 +16,8 @@ export 'about_section.dart';
 export 'hero_section.dart';
 export 'mitra_section.dart';
 export 'news_section.dart';
+export 'entrepreneurship_section.dart';
 export 'rss_news_section.dart';
 export 'guestbook_section.dart';
 export 'footer_section.dart';
+export 'list_news_section.dart';

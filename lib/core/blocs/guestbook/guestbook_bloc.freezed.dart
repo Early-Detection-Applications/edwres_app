@@ -55,11 +55,12 @@ extension GuestbookEventPatterns on GuestbookEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Fetch value)?  fetch,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Fetch value)?  fetch,TResult Function( _Create value)?  create,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Fetch() when fetch != null:
-return fetch(_that);case _:
+return fetch(_that);case _Create() when create != null:
+return create(_that);case _:
   return orElse();
 
 }
@@ -77,11 +78,12 @@ return fetch(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Fetch value)  fetch,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Fetch value)  fetch,required TResult Function( _Create value)  create,}){
 final _that = this;
 switch (_that) {
 case _Fetch():
-return fetch(_that);case _:
+return fetch(_that);case _Create():
+return create(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -98,11 +100,12 @@ return fetch(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Fetch value)?  fetch,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Fetch value)?  fetch,TResult? Function( _Create value)?  create,}){
 final _that = this;
 switch (_that) {
 case _Fetch() when fetch != null:
-return fetch(_that);case _:
+return fetch(_that);case _Create() when create != null:
+return create(_that);case _:
   return null;
 
 }
@@ -119,10 +122,11 @@ return fetch(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetch,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetch,TResult Function( String nama,  String email,  String pesan,  String turnstileToken)?  create,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Fetch() when fetch != null:
-return fetch();case _:
+return fetch();case _Create() when create != null:
+return create(_that.nama,_that.email,_that.pesan,_that.turnstileToken);case _:
   return orElse();
 
 }
@@ -140,10 +144,11 @@ return fetch();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetch,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetch,required TResult Function( String nama,  String email,  String pesan,  String turnstileToken)  create,}) {final _that = this;
 switch (_that) {
 case _Fetch():
-return fetch();case _:
+return fetch();case _Create():
+return create(_that.nama,_that.email,_that.pesan,_that.turnstileToken);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -160,10 +165,11 @@ return fetch();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetch,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetch,TResult? Function( String nama,  String email,  String pesan,  String turnstileToken)?  create,}) {final _that = this;
 switch (_that) {
 case _Fetch() when fetch != null:
-return fetch();case _:
+return fetch();case _Create() when create != null:
+return create(_that.nama,_that.email,_that.pesan,_that.turnstileToken);case _:
   return null;
 
 }
@@ -204,9 +210,81 @@ String toString() {
 
 
 /// @nodoc
+
+
+class _Create implements GuestbookEvent {
+  const _Create({required this.nama, required this.email, required this.pesan, required this.turnstileToken});
+  
+
+ final  String nama;
+ final  String email;
+ final  String pesan;
+ final  String turnstileToken;
+
+/// Create a copy of GuestbookEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CreateCopyWith<_Create> get copyWith => __$CreateCopyWithImpl<_Create>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Create&&(identical(other.nama, nama) || other.nama == nama)&&(identical(other.email, email) || other.email == email)&&(identical(other.pesan, pesan) || other.pesan == pesan)&&(identical(other.turnstileToken, turnstileToken) || other.turnstileToken == turnstileToken));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,nama,email,pesan,turnstileToken);
+
+@override
+String toString() {
+  return 'GuestbookEvent.create(nama: $nama, email: $email, pesan: $pesan, turnstileToken: $turnstileToken)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$CreateCopyWith<$Res> implements $GuestbookEventCopyWith<$Res> {
+  factory _$CreateCopyWith(_Create value, $Res Function(_Create) _then) = __$CreateCopyWithImpl;
+@useResult
+$Res call({
+ String nama, String email, String pesan, String turnstileToken
+});
+
+
+
+
+}
+/// @nodoc
+class __$CreateCopyWithImpl<$Res>
+    implements _$CreateCopyWith<$Res> {
+  __$CreateCopyWithImpl(this._self, this._then);
+
+  final _Create _self;
+  final $Res Function(_Create) _then;
+
+/// Create a copy of GuestbookEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? nama = null,Object? email = null,Object? pesan = null,Object? turnstileToken = null,}) {
+  return _then(_Create(
+nama: null == nama ? _self.nama : nama // ignore: cast_nullable_to_non_nullable
+as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,pesan: null == pesan ? _self.pesan : pesan // ignore: cast_nullable_to_non_nullable
+as String,turnstileToken: null == turnstileToken ? _self.turnstileToken : turnstileToken // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$GuestbookState {
 
- GuestbookStateStatus get status; List<GuestbookModel>? get data; String? get error;
+ GuestbookStateStatus get status; GuestbookStateStatus get createStatus; List<GuestbookModel>? get data; String? get error; String? get createError;
 /// Create a copy of GuestbookState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -217,16 +295,16 @@ $GuestbookStateCopyWith<GuestbookState> get copyWith => _$GuestbookStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GuestbookState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GuestbookState&&(identical(other.status, status) || other.status == status)&&(identical(other.createStatus, createStatus) || other.createStatus == createStatus)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.error, error) || other.error == error)&&(identical(other.createError, createError) || other.createError == createError));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(data),error);
+int get hashCode => Object.hash(runtimeType,status,createStatus,const DeepCollectionEquality().hash(data),error,createError);
 
 @override
 String toString() {
-  return 'GuestbookState(status: $status, data: $data, error: $error)';
+  return 'GuestbookState(status: $status, createStatus: $createStatus, data: $data, error: $error, createError: $createError)';
 }
 
 
@@ -237,7 +315,7 @@ abstract mixin class $GuestbookStateCopyWith<$Res>  {
   factory $GuestbookStateCopyWith(GuestbookState value, $Res Function(GuestbookState) _then) = _$GuestbookStateCopyWithImpl;
 @useResult
 $Res call({
- GuestbookStateStatus status, List<GuestbookModel>? data, String? error
+ GuestbookStateStatus status, GuestbookStateStatus createStatus, List<GuestbookModel>? data, String? error, String? createError
 });
 
 
@@ -254,11 +332,13 @@ class _$GuestbookStateCopyWithImpl<$Res>
 
 /// Create a copy of GuestbookState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? error = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? createStatus = null,Object? data = freezed,Object? error = freezed,Object? createError = freezed,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as GuestbookStateStatus,createStatus: null == createStatus ? _self.createStatus : createStatus // ignore: cast_nullable_to_non_nullable
 as GuestbookStateStatus,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as List<GuestbookModel>?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,createError: freezed == createError ? _self.createError : createError // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -344,10 +424,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( GuestbookStateStatus status,  List<GuestbookModel>? data,  String? error)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( GuestbookStateStatus status,  GuestbookStateStatus createStatus,  List<GuestbookModel>? data,  String? error,  String? createError)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GuestbookState() when $default != null:
-return $default(_that.status,_that.data,_that.error);case _:
+return $default(_that.status,_that.createStatus,_that.data,_that.error,_that.createError);case _:
   return orElse();
 
 }
@@ -365,10 +445,10 @@ return $default(_that.status,_that.data,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( GuestbookStateStatus status,  List<GuestbookModel>? data,  String? error)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( GuestbookStateStatus status,  GuestbookStateStatus createStatus,  List<GuestbookModel>? data,  String? error,  String? createError)  $default,) {final _that = this;
 switch (_that) {
 case _GuestbookState():
-return $default(_that.status,_that.data,_that.error);case _:
+return $default(_that.status,_that.createStatus,_that.data,_that.error,_that.createError);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -385,10 +465,10 @@ return $default(_that.status,_that.data,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( GuestbookStateStatus status,  List<GuestbookModel>? data,  String? error)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( GuestbookStateStatus status,  GuestbookStateStatus createStatus,  List<GuestbookModel>? data,  String? error,  String? createError)?  $default,) {final _that = this;
 switch (_that) {
 case _GuestbookState() when $default != null:
-return $default(_that.status,_that.data,_that.error);case _:
+return $default(_that.status,_that.createStatus,_that.data,_that.error,_that.createError);case _:
   return null;
 
 }
@@ -400,10 +480,11 @@ return $default(_that.status,_that.data,_that.error);case _:
 
 
 class _GuestbookState implements GuestbookState {
-  const _GuestbookState({this.status = GuestbookStateStatus.initial, final  List<GuestbookModel>? data, this.error = ''}): _data = data;
+  const _GuestbookState({this.status = GuestbookStateStatus.initial, this.createStatus = GuestbookStateStatus.initial, final  List<GuestbookModel>? data, this.error = '', this.createError = ''}): _data = data;
   
 
 @override@JsonKey() final  GuestbookStateStatus status;
+@override@JsonKey() final  GuestbookStateStatus createStatus;
  final  List<GuestbookModel>? _data;
 @override List<GuestbookModel>? get data {
   final value = _data;
@@ -414,6 +495,7 @@ class _GuestbookState implements GuestbookState {
 }
 
 @override@JsonKey() final  String? error;
+@override@JsonKey() final  String? createError;
 
 /// Create a copy of GuestbookState
 /// with the given fields replaced by the non-null parameter values.
@@ -425,16 +507,16 @@ _$GuestbookStateCopyWith<_GuestbookState> get copyWith => __$GuestbookStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GuestbookState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._data, _data)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GuestbookState&&(identical(other.status, status) || other.status == status)&&(identical(other.createStatus, createStatus) || other.createStatus == createStatus)&&const DeepCollectionEquality().equals(other._data, _data)&&(identical(other.error, error) || other.error == error)&&(identical(other.createError, createError) || other.createError == createError));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_data),error);
+int get hashCode => Object.hash(runtimeType,status,createStatus,const DeepCollectionEquality().hash(_data),error,createError);
 
 @override
 String toString() {
-  return 'GuestbookState(status: $status, data: $data, error: $error)';
+  return 'GuestbookState(status: $status, createStatus: $createStatus, data: $data, error: $error, createError: $createError)';
 }
 
 
@@ -445,7 +527,7 @@ abstract mixin class _$GuestbookStateCopyWith<$Res> implements $GuestbookStateCo
   factory _$GuestbookStateCopyWith(_GuestbookState value, $Res Function(_GuestbookState) _then) = __$GuestbookStateCopyWithImpl;
 @override @useResult
 $Res call({
- GuestbookStateStatus status, List<GuestbookModel>? data, String? error
+ GuestbookStateStatus status, GuestbookStateStatus createStatus, List<GuestbookModel>? data, String? error, String? createError
 });
 
 
@@ -462,11 +544,13 @@ class __$GuestbookStateCopyWithImpl<$Res>
 
 /// Create a copy of GuestbookState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? error = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? createStatus = null,Object? data = freezed,Object? error = freezed,Object? createError = freezed,}) {
   return _then(_GuestbookState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as GuestbookStateStatus,createStatus: null == createStatus ? _self.createStatus : createStatus // ignore: cast_nullable_to_non_nullable
 as GuestbookStateStatus,data: freezed == data ? _self._data : data // ignore: cast_nullable_to_non_nullable
 as List<GuestbookModel>?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,createError: freezed == createError ? _self.createError : createError // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

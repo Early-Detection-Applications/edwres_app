@@ -58,11 +58,11 @@ class ConsultationSectionTabBar extends StatelessWidget {
         labelColor: Colors.white,
         unselectedLabelColor: Colors.white70,
 
-        labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+        labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
 
         unselectedLabelStyle: const TextStyle(
           fontWeight: FontWeight.w600,
-          fontSize: 14,
+          fontSize: 12,
         ),
 
         tabs: const [

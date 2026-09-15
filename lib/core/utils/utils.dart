@@ -15,3 +15,6 @@
 export 'open_whatsapp.dart';
 export 'string_utils.dart';
 export 'open_news.dart';
+export 'number_converter.dart';
+export 'string_to_int_converter.dart';
+export 'date_time_formatter.dart';

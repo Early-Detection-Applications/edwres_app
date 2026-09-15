@@ -38,7 +38,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         password: event.password,
       );
 
-      await SessionManager.save(response.user!);
+      final user = response.user;
+
+      if (user == null) {
+        throw Exception('Data user dari API kosong');
+      }
+
+      await SessionManager.save(user);
 
       emit(state.copyWith(status: LoginStateStatus.loaded, data: response));
     } catch (e) {

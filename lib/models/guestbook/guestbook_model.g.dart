@@ -12,6 +12,9 @@ _GuestbookModel _$GuestbookModelFromJson(Map<String, dynamic> json) =>
       nama: json['nama'] as String?,
       email: json['email'] as String?,
       message: json['pesan'] as String?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
     );
 
 Map<String, dynamic> _$GuestbookModelToJson(_GuestbookModel instance) =>
@@ -20,4 +23,5 @@ Map<String, dynamic> _$GuestbookModelToJson(_GuestbookModel instance) =>
       'nama': instance.nama,
       'email': instance.email,
       'pesan': instance.message,
+      'created_at': instance.createdAt?.toIso8601String(),
     };

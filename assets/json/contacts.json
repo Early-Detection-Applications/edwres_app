@@ -2,16 +2,19 @@
   {
     "title": "Prof. Dr. Fatwa Tentama, S.Psi., M.Si.",
     "description": "Program Studi Magister Psikologi, Universitas Ahmad Dahlan Yogyakarta",
-    "icon": "psychology"
+    "icon": "psychology",
+    "email": "fatwa.tentama@psy.uad.ac.id"
   },
   {
     "title": "Zahro Varisna Rohmadani, S.Psi, M.Psi., Psikolog",
     "description": "Program Studi Psikologi, Universitas 'Aisyiyah Yogyakarta",
-    "icon": "psychology"
+    "icon": "psychology",
+    "email": "zahrovarisna@unisayogya.ac.id"
   },
   {
     "title": "Ir. Herman Yuliansyah, S.T., M.Eng., Ph.D.",
     "description": "Program Studi Informatika, Universitas Ahmad Dahlan Yogyakarta",
-    "icon": "engineer"
+    "icon": "engineer",
+    "email": "herman.yuliansyah@tif.uad.ac.id"
   }
 ]

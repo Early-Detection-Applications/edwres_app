@@ -43,4 +43,25 @@ class GuestbookRepository {
 
     throw Exception('Gagal memuat data');
   }
+
+  Future<void> createGuestbook({
+    required String nama,
+    required String email,
+    required String pesan,
+    required String turnstileToken,
+  }) async {
+    final response = await _dio.post(
+      api,
+      data: {
+        'nama': nama,
+        'email': email,
+        'pesan': pesan,
+        'cf-turnstile-response': turnstileToken,
+      },
+    );
+
+    if (response.statusCode != 200 && response.statusCode != 201) {
+      throw Exception(response.data?['message'] ?? 'Gagal mengirim pesan');
+    }
+  }
 }

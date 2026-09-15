@@ -24,6 +24,7 @@ abstract class GuestbookModel with _$GuestbookModel {
     @JsonKey(name: 'nama') String? nama,
     @JsonKey(name: 'email') String? email,
     @JsonKey(name: 'pesan') String? message,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
   }) = _GuestbookModel;
 
   factory GuestbookModel.fromJson(Map<String, dynamic> json) =>

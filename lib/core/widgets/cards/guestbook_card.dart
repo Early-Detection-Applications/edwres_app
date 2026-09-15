@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import 'package:edwres_app/app/theme/theme.dart';
+import 'package:edwres_app/core/core.dart';
 import 'package:edwres_app/models/guestbook/guestbook.dart';
 import 'package:flutter/material.dart';
 
@@ -73,7 +74,7 @@ class GuestbookCard extends StatelessWidget {
                     const SizedBox(width: 8),
 
                     Text(
-                      '• BARU SAJA',
+                      DateTimeFormatter.formatDateTime(guestbook.createdAt),
                       style: AppTextStyle.bodySm.copyWith(
                         color: Colors.white38,
                       ),

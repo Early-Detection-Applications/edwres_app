@@ -15,16 +15,17 @@
 import 'package:edwres_app/app/app.dart';
 import 'package:edwres_app/models/assessment/assessment.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactCard extends StatelessWidget {
   final AssessmentModel data;
+
   const ContactCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 340,
       child: Card(
         color: AppColor.primary400,
         margin: EdgeInsets.zero,
@@ -34,7 +35,7 @@ class ContactCard extends StatelessWidget {
           padding: const EdgeInsets.all(32.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 height: 50,
@@ -45,30 +46,79 @@ class ContactCard extends StatelessWidget {
                 ),
                 child: Icon(Icons.person, color: AppColor.secondary),
               ),
+
               const SizedBox(height: 24.0),
+
               Text(
                 data.title ?? '-',
                 style: AppTextStyle.titleLg,
                 textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
+
               const SizedBox(height: 24.0),
+
               Text(
                 data.description ?? '-',
                 style: AppTextStyle.bodyMd.copyWith(color: AppColor.gray),
                 textAlign: TextAlign.center,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
               ),
+
               const SizedBox(height: 24.0),
+
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text(
-                          'Fitur ini belum tersedia. Masih dalam proses pengembangan.',
+                  onPressed: () async {
+                    final email = data.email;
+
+                    if (email == null || email.isEmpty) {
+                      if (!context.mounted) return;
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Alamat email tidak tersedia'),
                         ),
-                      ),
+                      );
+
+                      return;
+                    }
+
+                    final uri = Uri(
+                      scheme: 'mailto',
+                      path: email,
+                      queryParameters: {'subject': 'Konsultasi'},
                     );
+
+                    debugPrint('Email URI: $uri');
+
+                    try {
+                      final launched = await launchUrl(
+                        uri,
+                        mode: LaunchMode.externalApplication,
+                      );
+
+                      debugPrint('Email launched: $launched');
+
+                      if (!launched && context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Tidak dapat membuka aplikasi email'),
+                          ),
+                        );
+                      }
+                    } catch (e) {
+                      debugPrint('Error membuka email: $e');
+
+                      if (!context.mounted) return;
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Gagal membuka email: $e')),
+                      );
+                    }
                   },
                   style: OutlinedButton.styleFrom(
                     backgroundColor: const Color(0xFF1F5B68),
@@ -101,6 +151,5 @@ class ContactCard extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

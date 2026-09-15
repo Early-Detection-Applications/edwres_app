@@ -12,12 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'package:edwres_app/app/router/app_routes.dart';
 import 'package:edwres_app/app/theme/theme.dart';
 import 'package:edwres_app/core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HeroSection extends StatelessWidget {
-  const HeroSection({super.key});
+  final VoidCallback? onLearnMorePressed;
+  const HeroSection({super.key, this.onLearnMorePressed});
 
   @override
   Widget build(BuildContext context) {
@@ -86,15 +89,11 @@ class HeroSection extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            SessionManager.isLogin.value
-                                ? 'Fitur belum tersedia. Sedang dalam proses pengembangan'
-                                : 'Silahkan login terlebih dahulu!',
-                          ),
-                        ),
-                      );
+                      SessionManager.isLogin.value
+                          ? GoRouter.of(
+                              context,
+                            ).pushNamed(AppRoutes.consultation)
+                          : GoRouter.of(context).pushNamed(AppRoutes.login);
                     },
                     style: ButtonStyle(
                       backgroundColor: WidgetStatePropertyAll(
@@ -113,36 +112,29 @@ class HeroSection extends StatelessWidget {
                   ),
                 ),
               ),
-              // TODO Revert is use
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 8),
-              //   child: SizedBox(
-              //     width: double.infinity,
-              //     child: ElevatedButton(
-              //       onPressed: () {
-              //         ScaffoldMessenger.of(context).showSnackBar(
-              //           SnackBar(
-              //             content: Text('Sedang dalam proses pengembangan'),
-              //           ),
-              //         );
-              //       },
-              //       style: ButtonStyle(
-              //         backgroundColor: WidgetStatePropertyAll(
-              //           Colors.transparent.withValues(alpha: 0),
-              //         ),
-              //         shape: WidgetStatePropertyAll(
-              //           RoundedRectangleBorder(
-              //             borderRadius: BorderRadius.circular(8),
-              //           ),
-              //         ),
-              //       ),
-              //       child: Text(
-              //         'Pelajari Selengkapnya',
-              //         style: AppTextStyle.titleMd,
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: onLearnMorePressed,
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStatePropertyAll(
+                        Colors.transparent.withValues(alpha: 0),
+                      ),
+                      shape: WidgetStatePropertyAll(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                    child: Text(
+                      'Pelajari Selengkapnya',
+                      style: AppTextStyle.titleMd,
+                    ),
+                  ),
+                ),
+              ),
               const SizedBox(height: 32.0),
             ],
           ),

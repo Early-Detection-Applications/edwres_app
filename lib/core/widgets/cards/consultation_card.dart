@@ -15,6 +15,7 @@
 import 'package:edwres_app/app/app.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class ConsultationCard extends StatelessWidget {
   const ConsultationCard({super.key});
@@ -59,12 +60,11 @@ class ConsultationCard extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  GoRouter.of(context).pushNamed(AppRoutes.detectionHistory);
+                },
                 icon: const Icon(Icons.history, color: Colors.white),
-                label: const Text(
-                  'Riwayat Konsultasi',
-                  style: AppTextStyle.labelLg,
-                ),
+                label: Text('Riwayat Konsultasi', style: AppTextStyle.labelLg),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFFF8A65).withOpacity(0.25),
                   foregroundColor: Colors.white,

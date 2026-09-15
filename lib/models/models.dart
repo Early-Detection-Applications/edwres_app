@@ -13,7 +13,11 @@
 // limitations under the License.
 
 export 'news/news.dart';
+export 'entrepreneurship/entrepreneurship.dart';
 export 'user/user.dart';
 export 'pagination/pagination.dart';
 export 'guestbook/guestbook.dart';
 export 'data/data.dart';
+export 'indicator/indicator.dart';
+export 'diagnosis/diagnosis.dart';
+export 'detection_history/detection_history.dart';

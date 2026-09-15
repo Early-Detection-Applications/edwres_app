@@ -14,6 +14,7 @@
 
 export 'assessment_card.dart';
 export 'news_card.dart';
+export 'entrepreneurship_card.dart';
 export 'comment_card.dart';
 export 'rss_news_card.dart';
 export 'guestbook_card.dart';

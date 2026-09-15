@@ -23,11 +23,13 @@ class SessionManager {
 
   static String? username;
   static String? level;
+  static String? idUser;
 
   static Future<void> load() async {
     final prefs = await SharedPreferences.getInstance();
 
     isLogin.value = prefs.getBool('is_login') ?? false;
+    idUser = prefs.getString('id_user');
     username = prefs.getString('username');
     level = prefs.getString('level');
   }
@@ -36,10 +38,12 @@ class SessionManager {
     final prefs = await SharedPreferences.getInstance();
 
     await prefs.setBool('is_login', true);
+    await prefs.setString('id_user', user.id!);
     await prefs.setString('username', user.username!);
     await prefs.setString('level', user.level!);
 
     isLogin.value = true;
+    idUser = user.id;
     username = user.username;
     level = user.level;
   }
@@ -50,6 +54,7 @@ class SessionManager {
     await prefs.clear();
 
     isLogin.value = false;
+    idUser = null;
     username = null;
     level = null;
   }

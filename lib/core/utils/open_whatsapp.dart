@@ -16,9 +16,29 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> openWhatsapp() async {
-  final url = Uri.parse('https://wa.me/${dotenv.env['WHATSAPP']}');
+  final phone = dotenv.env['WHATSAPP'];
 
-  if (await canLaunchUrl(url)) {
+  if (phone == null || phone.isEmpty) {
+    print('WHATSAPP tidak ditemukan di .env');
+    return;
+  }
+
+  final url = Uri.parse('https://wa.me/$phone');
+
+  print('WhatsApp URL: $url');
+
+  try {
+    final canLaunch = await canLaunchUrl(url);
+
+    print('Can launch WhatsApp URL: $canLaunch');
+
+    if (!canLaunch) {
+      print('Tidak ada aplikasi yang dapat membuka URL: $url');
+      return;
+    }
+
     await launchUrl(url, mode: LaunchMode.externalApplication);
+  } catch (e) {
+    print('Gagal membuka WhatsApp: $e');
   }
 }

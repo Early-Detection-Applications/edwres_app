@@ -13,3 +13,4 @@
 // limitations under the License.
 
 export 'login/login.dart';
+export 'register/register.dart';

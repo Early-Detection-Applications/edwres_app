@@ -30,7 +30,9 @@ enum GuestbookStateStatus {
 abstract class GuestbookState with _$GuestbookState {
   const factory GuestbookState({
     @Default(GuestbookStateStatus.initial) GuestbookStateStatus status,
+    @Default(GuestbookStateStatus.initial) GuestbookStateStatus createStatus,
     List<GuestbookModel>? data,
     @Default('') String? error,
+    @Default('') String? createError,
   }) = _GuestbookState;
 }

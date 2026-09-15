@@ -17,4 +17,10 @@ part of 'guestbook_bloc.dart';
 @freezed
 abstract class GuestbookEvent with _$GuestbookEvent {
   const factory GuestbookEvent.fetch() = _Fetch;
+  const factory GuestbookEvent.create({
+    required String nama,
+    required String email,
+    required String pesan,
+    required String turnstileToken,
+  }) = _Create;
 }

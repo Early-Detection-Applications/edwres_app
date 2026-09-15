@@ -16,8 +16,16 @@ part of 'consultation_bloc.dart';
 
 @freezed
 class ConsultationEvent with _$ConsultationEvent {
-  const factory ConsultationEvent.toggleQuestion(int questionId) =
+  const factory ConsultationEvent.fetch() = _Fetch;
+
+  const factory ConsultationEvent.toggleQuestion(String questionId) =
       _ToggleQuestion;
 
+  const factory ConsultationEvent.submit({required String idUser}) = _Submit;
+
+  const factory ConsultationEvent.downloadPdf({required int riwayatId}) =
+      _DownloadPdf;
+
+  const factory ConsultationEvent.openPdf({required int riwayatId}) = _OpenPdf;
   const factory ConsultationEvent.reset() = _Reset;
 }

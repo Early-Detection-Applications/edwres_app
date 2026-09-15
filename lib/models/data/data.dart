@@ -15,3 +15,4 @@
 export 'data_model.dart';
 export 'links_model.dart';
 export 'data_response_model.dart';
+export 'indicator_response_model.dart';

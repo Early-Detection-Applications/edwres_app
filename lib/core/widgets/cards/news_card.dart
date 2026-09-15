@@ -25,7 +25,9 @@ class NewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imageUrl =
-        "${dotenv.get('IMAGE_URL')}/sikolog-edwres/berita/${newsModel.gambar}";
+        newsModel.gambar == null || newsModel.gambar!.trim().isEmpty
+        ? null
+        : "${dotenv.get('IMAGE_URL')}/berita/${newsModel.gambar}";
     return SizedBox(
       height: 340,
       child: Card(
@@ -39,14 +41,46 @@ class NewsCard extends StatelessWidget {
               child: Stack(
                 children: [
                   Positioned.fill(
-                    child: imageUrl.isNotEmpty == true
-                        ? Image.network(
-                            imageUrl,
-                            fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) =>
-                                const Icon(Icons.image_not_supported),
+                    child: imageUrl?.isNotEmpty == true
+                        ? Container(
+                            color: AppColor.primaryBold,
+                            child: Image.network(
+                              imageUrl!,
+                              fit: BoxFit.cover,
+                              cacheWidth:
+                                  (MediaQuery.sizeOf(context).width *
+                                          MediaQuery.devicePixelRatioOf(
+                                            context,
+                                          ))
+                                      .round(),
+
+                              gaplessPlayback: true,
+                              loadingBuilder: (context, child, progress) {
+                                if (progress == null) return child;
+
+                                return const Center(
+                                  child: CircularProgressIndicator(
+                                    color: AppColor.secondary,
+                                  ),
+                                );
+                              },
+                              errorBuilder: (_, __, ___) => const Center(
+                                child: Icon(
+                                  Icons.image_not_supported,
+                                  color: AppColor.gray,
+                                ),
+                              ),
+                            ),
                           )
-                        : const Icon(Icons.image_not_supported),
+                        : const ColoredBox(
+                            color: AppColor.primaryBold,
+                            child: Center(
+                              child: Icon(
+                                Icons.image_not_supported,
+                                color: AppColor.gray,
+                              ),
+                            ),
+                          ),
                   ),
 
                   Positioned(
@@ -62,7 +96,9 @@ class NewsCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        newsModel.kategori?.namaKategori != null
+                        newsModel.namaKategori != null
+                            ? newsModel.namaKategori!
+                            : newsModel.kategori?.namaKategori != null
                             ? newsModel.kategori!.namaKategori!
                             : newsModel.jenisBerita != null
                             ? newsModel.jenisBerita!

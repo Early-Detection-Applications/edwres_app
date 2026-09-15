@@ -14,7 +14,10 @@
 
 export 'home_screen/home_screen.dart';
 export 'sections/sections.dart';
-export 'detail/detail.dart';
 export 'auth/auth.dart';
 export 'contacts/contacts.dart';
 export 'consultation/consultation.dart';
+export 'news/news.dart';
+export 'detection_history/detection_history.dart';
+export 'journal_reference/journal_reference.dart';
+export 'module/module_pelatihan.dart';
