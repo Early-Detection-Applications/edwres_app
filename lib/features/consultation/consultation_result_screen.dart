@@ -699,13 +699,17 @@ class ConsultationResultScreen extends StatelessWidget {
         style: AppTextStyle.bodyMd.copyWith(color: const Color(0xFFD0DEE2)),
       );
     }
+
     const textColor = Color(0xFFD0DEE2);
 
     return Html(
       data: html,
       style: {
+        // =========================
+        // BODY
+        // =========================
         'body': Style(
-          color: const Color(0xFFD0DEE2),
+          color: textColor,
           fontSize: FontSize(14),
           lineHeight: const LineHeight(1.45),
           margin: Margins.zero,
@@ -713,33 +717,82 @@ class ConsultationResultScreen extends StatelessWidget {
           textAlign: TextAlign.justify,
         ),
 
+        // =========================
+        // PARAGRAPH
+        // =========================
         'p': Style(
           margin: Margins.only(bottom: 8),
+          padding: HtmlPaddings.zero,
           textAlign: TextAlign.justify,
           color: textColor,
+          fontSize: FontSize(14),
         ),
 
+        // =========================
+        // DIV
+        // =========================
+        'div': Style(
+          margin: Margins.zero,
+          padding: HtmlPaddings.zero,
+          textAlign: TextAlign.justify,
+          color: textColor,
+          fontSize: FontSize(14),
+        ),
+
+        // =========================
+        // SPAN
+        // =========================
+        'span': Style(color: textColor, fontSize: FontSize(14)),
+
+        // =========================
+        // ORDERED LIST
+        // =========================
         'ol': Style(
-          margin: Margins.only(left: 4, bottom: 4),
+          margin: Margins.only(left: 4, bottom: 8),
           padding: HtmlPaddings.zero,
           color: textColor,
+          fontSize: FontSize(14),
         ),
 
+        // =========================
+        // UNORDERED LIST
+        // =========================
         'ul': Style(
-          margin: Margins.only(left: 4, bottom: 4),
+          margin: Margins.only(left: 4, bottom: 8),
           padding: HtmlPaddings.zero,
           color: textColor,
+          fontSize: FontSize(14),
         ),
 
+        // =========================
+        // LIST ITEM
+        // =========================
         'li': Style(
           margin: Margins.only(bottom: 5),
+          padding: HtmlPaddings.zero,
           textAlign: TextAlign.justify,
           color: textColor,
+          fontSize: FontSize(14),
         ),
 
+        // =========================
+        // BOLD
+        // =========================
         'strong': Style(fontWeight: FontWeight.w800, color: textColor),
 
         'b': Style(fontWeight: FontWeight.w800, color: textColor),
+
+        // =========================
+        // ITALIC
+        // =========================
+        'em': Style(fontStyle: FontStyle.italic, color: textColor),
+
+        'i': Style(fontStyle: FontStyle.italic, color: textColor),
+
+        // =========================
+        // QUILL UI
+        // =========================
+        '.ql-ui': Style(display: Display.none),
       },
     );
   }

@@ -30,6 +30,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _obscurePassword = true;
   bool _obscureRetypePassword = true;
 
+  // Status validasi password
+  bool _isPasswordValid = false;
+
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _retypePasswordController = TextEditingController();
@@ -37,7 +40,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _emailController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+
+    // Listener agar status button berubah realtime
+    _usernameController.addListener(_onFieldChanged);
+    _namaLengkapController.addListener(_onFieldChanged);
+    _emailController.addListener(_onFieldChanged);
+    _passwordController.addListener(_onFieldChanged);
+    _retypePasswordController.addListener(_onFieldChanged);
+  }
+
+  void _onFieldChanged() {
+    setState(() {
+      _isPasswordValid = _passwordController.text.length >= 8;
+    });
+  }
+
+  @override
   void dispose() {
+    _usernameController.removeListener(_onFieldChanged);
+    _namaLengkapController.removeListener(_onFieldChanged);
+    _emailController.removeListener(_onFieldChanged);
+    _passwordController.removeListener(_onFieldChanged);
+    _retypePasswordController.removeListener(_onFieldChanged);
+
     _usernameController.dispose();
     _passwordController.dispose();
     _retypePasswordController.dispose();
@@ -55,10 +82,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   bool get _canRegister {
     return _usernameController.text.trim().isNotEmpty &&
-        _passwordController.text.trim().isNotEmpty &&
-        _retypePasswordController.text.trim().isNotEmpty &&
         _namaLengkapController.text.trim().isNotEmpty &&
-        _emailController.text.trim().isNotEmpty;
+        _emailController.text.trim().isNotEmpty &&
+        _passwordController.text.isNotEmpty &&
+        _passwordController.text.length >= 8 &&
+        _retypePasswordController.text.isNotEmpty;
   }
 
   Future<void> _submit(BuildContext context) async {
@@ -69,12 +97,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final email = _emailController.text.trim();
 
     if (!_canRegister) {
-      _showError('Data tidak boleh kosong.');
+      _showError('Data belum lengkap.');
       return;
     }
 
     if (!_isValidEmail(email)) {
       _showError('Alamat email tidak valid.');
+      return;
+    }
+
+    // Validasi password minimal 8 karakter
+    if (password.length < 8) {
+      _showError('Password minimal 8 karakter.');
       return;
     }
 
@@ -154,7 +188,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       },
     );
 
-    // Async gap selesai di sini.
     if (!mounted || confirm != true) {
       return;
     }
@@ -231,7 +264,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               onPressed: () {
                 Navigator.of(dialogContext).pop();
-                GoRouter.of(context).pushNamed(AppRoutes.login);
+                GoRouter.of(context).go(AppRoutes.login);
               },
               child: Text(
                 'OK',
@@ -277,6 +310,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                 const SizedBox(height: 32),
 
+                // =========================
+                // USERNAME
+                // =========================
                 _buildLabel('Username'),
                 const SizedBox(height: 8),
 
@@ -291,6 +327,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                 const SizedBox(height: 16),
 
+                // =========================
+                // NAMA LENGKAP
+                // =========================
                 _buildLabel('Nama Lengkap'),
                 const SizedBox(height: 8),
 
@@ -305,6 +344,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                 const SizedBox(height: 16),
 
+                // =========================
+                // EMAIL
+                // =========================
                 _buildLabel('Email'),
                 const SizedBox(height: 8),
 
@@ -320,6 +362,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                 const SizedBox(height: 16),
 
+                // =========================
+                // PASSWORD
+                // =========================
                 _buildLabel('Password'),
                 const SizedBox(height: 8),
 
@@ -347,8 +392,37 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
 
+                const SizedBox(height: 6),
+
+                // Indikator password realtime
+                Row(
+                  children: [
+                    Icon(
+                      _isPasswordValid
+                          ? Icons.check_circle_outline
+                          : Icons.info_outline,
+                      size: 16,
+                      color: _isPasswordValid
+                          ? AppColor.secondary
+                          : AppColor.gray,
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      'Password minimal 8 karakter',
+                      style: AppTextStyle.bodySm.copyWith(
+                        color: _isPasswordValid
+                            ? AppColor.secondary
+                            : AppColor.gray,
+                      ),
+                    ),
+                  ],
+                ),
+
                 const SizedBox(height: 16),
 
+                // =========================
+                // RE-TYPE PASSWORD
+                // =========================
                 _buildLabel('Re-type Password'),
                 const SizedBox(height: 8),
 
@@ -378,6 +452,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                 const SizedBox(height: 32),
 
+                // =========================
+                // BUTTON REGISTER
+                // =========================
                 BlocConsumer<RegisterBloc, RegisterState>(
                   listener: (context, state) {
                     if (state.status.isLoaded) {
@@ -391,12 +468,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     }
                   },
                   builder: (context, state) {
+                    final isDisabled = state.status.isLoading || !_canRegister;
+
                     return SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
                         style: ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(
-                            AppColor.secondary,
+                          backgroundColor:
+                              WidgetStateProperty.resolveWith<Color>((states) {
+                                if (states.contains(WidgetState.disabled)) {
+                                  return AppColor.gray;
+                                }
+
+                                return AppColor.secondary;
+                              }),
+                          foregroundColor: const WidgetStatePropertyAll(
+                            AppColor.white,
                           ),
                           shape: WidgetStatePropertyAll(
                             RoundedRectangleBorder(
@@ -404,9 +491,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ),
                         ),
-                        onPressed: state.status.isLoading
-                            ? null
-                            : () => _submit(context),
+
+                        // Disabled jika:
+                        // - sedang loading
+                        // - ada field yang kosong
+                        // - password kurang dari 8 karakter
+                        onPressed: isDisabled ? null : () => _submit(context),
+
                         child: state.status.isLoading
                             ? const SizedBox(
                                 width: 20,
@@ -424,6 +515,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                 const SizedBox(height: 24),
 
+                // =========================
+                // LOGIN
+                // =========================
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
